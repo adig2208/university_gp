@@ -35,7 +35,7 @@ CREATE TABLE `advisor` (
   PRIMARY KEY (`staff_id`),
   KEY `department_id` (`department_id`),
   CONSTRAINT `advisor_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `advisor` (
 
 LOCK TABLES `advisor` WRITE;
 /*!40000 ALTER TABLE `advisor` DISABLE KEYS */;
-INSERT INTO `advisor` VALUES (1,'Jn mith','1990-03-01',1234567890,'jn.mith@example.com','advisor',1),(2,'Alex Johnson','1982-07-12',85721423,'ajohnson@northeastern.edu','advisor',1),(3,'Brenda Lee','1985-01-30',85720976,'blee@northeastern.edu','advisor',2),(4,'Charlie Brown','1979-09-22',85720875,'cbrown@northeastern.edu','advisor',3),(5,'David Chen','1988-04-13',85720132,'dchen@northeastern.edu','advisor',4),(6,'Emily Davis','1992-11-27',85720742,'edavis@northeastern.edu','advisor',5),(7,'Frank Taylor','1980-06-19',85720258,'ftaylor@northeastern.edu','advisor',6),(8,'Grace Hernandez','1975-03-14',85720345,'ghernandez@northeastern.edu','advisor',7),(9,'Henry Wilson','1983-08-08',85720567,'hwilson@northeastern.edu','advisor',8),(10,'Isabella Johnson','1990-05-05',85721145,'ijohnson@northeastern.edu','advisor',9),(11,'Jake Smith','1977-12-28',85720987,'jsmith@northeastern.edu','advisor',10);
+INSERT INTO `advisor` VALUES (1,'Alex Johnson','1982-07-12',85721423,'ajohnson@northeastern.edu','advisor',1),(2,'Brenda Lee','1985-01-30',85720976,'blee@northeastern.edu','advisor',2),(3,'Charlie Brown','1979-09-22',85720875,'cbrown@northeastern.edu','advisor',3),(4,'David Chen','1988-04-13',85720132,'dchen@northeastern.edu','advisor',4),(5,'Emily Davis','1992-11-27',85720742,'edavis@northeastern.edu','advisor',5),(6,'Frank Taylor','1980-06-19',85720258,'ftaylor@northeastern.edu','advisor',6),(7,'Grace Hernandez','1975-03-14',85720345,'ghernandez@northeastern.edu','advisor',7),(8,'Henry Wilson','1983-08-08',85720567,'hwilson@northeastern.edu','advisor',8),(9,'Isabella Johnson','1990-05-05',85721145,'ijohnson@northeastern.edu','advisor',9),(10,'Jake Smith','1977-12-28',85720987,'jsmith@northeastern.edu','advisor',10),(11,'Olivia Baker','1992-05-07',12345678,'olivia.baker@northeastern.edu','advisor',1),(12,'Ethan Cooper','1987-08-21',23456789,'ethan.cooper@northeastern.edu','advisor',2),(13,'Avery Davis','1980-11-12',34567890,'avery.davis@northeastern.edu','advisor',3),(14,'Isabella Garcia','1995-02-16',45678901,'isabella.garcia@northeastern.edu','advisor',4),(15,'Jackson Kim','1983-06-09',56789012,'jackson.kim@northeastern.edu','advisor',5),(16,'Sophie Lee','1990-12-22',67890123,'sophie.lee@northeastern.edu','advisor',6),(17,'Caleb Miller','1977-03-03',78901234,'caleb.miller@northeastern.edu','advisor',7),(18,'Natalie Nguyen','1993-09-18',89012345,'natalie.nguyen@northeastern.edu','advisor',8),(19,'Levi Patel','1988-04-30',90123456,'levi.patel@northeastern.edu','advisor',9),(20,'Aria Smith','1981-01-24',12345678,'aria.smith@northeastern.edu','advisor',10);
 /*!40000 ALTER TABLE `advisor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -111,7 +111,7 @@ CREATE TABLE `building` (
   `building_address` varchar(200) DEFAULT NULL,
   `phone_number` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`building_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `building` (
 
 LOCK TABLES `building` WRITE;
 /*!40000 ALTER TABLE `building` DISABLE KEYS */;
-INSERT INTO `building` VALUES (1,'Smith Hall','123 Main St, Anytown, USA','(555) 555-1234'),(2,'Forsyth Building','145 Forsyth St, Boston, MA 02115','617-373-2000'),(3,'WVH Building','360 Huntington Ave, Boston, MA 02115','617-373-2000'),(4,'Dockser Hall','65 Forsyth St, Boston, MA 02115','617-373-2000'),(5,'Hayden Hall','360 Huntington Ave, Boston, MA 02115','617-373-2000'),(6,'Richards Hall','25 Leon St, Boston, MA 02115','617-373-2000'),(7,'Robinson Hall','301 Huntington Ave, Boston, MA 02115','617-373-2000'),(8,'Kariotis Hall','11 Speare Pl, Boston, MA 02115','617-373-2000'),(9,'International Village','1155 Tremont St, Boston, MA 02120','617-373-2000'),(10,'Rubenstein Hall','68 Forsyth St, Boston, MA 02115','617-373-2000'),(11,'Lake Hall','360 Huntington Ave, Boston, MA 02115','617-373-2000'),(12,'Stetson West','10 Leon St, Boston, MA 02115','617-373-2000'),(13,'Cullinane Hall','117 Cullinane Hall, Boston, MA 02115','617-373-2000'),(14,'Churchill Hall','40A Leon St, Boston, MA 02115','617-373-2000'),(15,'Ryder Hall','11 Leon St, Boston, MA 02115','617-373-2000'),(16,'Wollaston Building','316 Huntington Ave, Boston, MA 02115','617-373-2000'),(17,'Dodge Hall','360 Huntington Ave, Boston, MA 02115','617-373-2000'),(18,'Davies Hall','360 Huntington Ave, Boston, MA 02115','617-373-2000'),(19,'Mugar Hall','360 Huntington Ave, Boston, MA 02115','617-373-2000'),(20,'International Student Center','104 Forsyth St, Boston, MA 02115','617-373-2000'),(21,'Kerr Hall','340 Huntington Ave, Boston, MA 02115','617-373-2000'),(22,'Columbus Place','716 Columbus Ave, Boston, MA 02120','617-373-2000'),(23,'Rubenstein Hall Annex','106 Saint Botolph St, Boston, MA 02115','617-373-2000'),(24,'West Village E','40A Leon St, Boston, MA 02115','617-373-2000'),(25,'Snell Engineering Center','360 Huntington Ave, Boston, MA 02115','617-373-2000'),(26,'Krentzman Quad','15 Forsyth St, Boston, MA 02115','617-373-2000'),(27,'Fenway Center','77 Saint Botolph St, Boston, MA 02115','617-373-2000'),(28,'1155 Tremont','1155 Tremont St, Boston, MA 02120','617-373-2000'),(29,'Burstein Hall','135 Forsyth St, Boston, MA 02115','617-373-2000');
+INSERT INTO `building` VALUES (1,'Forsyth Building','145 Forsyth St, Boston, MA 02115','617-373-2000'),(2,'WVH Building','360 Huntington Ave, Boston, MA 02115','617-373-2000'),(3,'Dockser Hall','65 Forsyth St, Boston, MA 02115','617-373-2000'),(4,'Hayden Hall','360 Huntington Ave, Boston, MA 02115','617-373-2000'),(5,'Richards Hall','25 Leon St, Boston, MA 02115','617-373-2000'),(6,'Robinson Hall','301 Huntington Ave, Boston, MA 02115','617-373-2000'),(7,'Kariotis Hall','11 Speare Pl, Boston, MA 02115','617-373-2000'),(8,'International Village','1155 Tremont St, Boston, MA 02120','617-373-2000'),(9,'Rubenstein Hall','68 Forsyth St, Boston, MA 02115','617-373-2000'),(10,'Lake Hall','360 Huntington Ave, Boston, MA 02115','617-373-2000'),(11,'Stetson West','10 Leon St, Boston, MA 02115','617-373-2000');
 /*!40000 ALTER TABLE `building` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,7 +139,7 @@ CREATE TABLE `classroom` (
   PRIMARY KEY (`room_id`),
   KEY `building_id` (`building_id`),
   CONSTRAINT `classroom_ibfk_1` FOREIGN KEY (`building_id`) REFERENCES `building` (`building_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +148,7 @@ CREATE TABLE `classroom` (
 
 LOCK TABLES `classroom` WRITE;
 /*!40000 ALTER TABLE `classroom` DISABLE KEYS */;
-INSERT INTO `classroom` VALUES (1,'114',50,1),(2,'304',30,2),(3,'102',25,3),(4,'203',40,4),(5,'205',35,5),(6,'307',20,6),(7,'301',50,7),(8,'402',40,8),(9,'212',30,9),(10,'306',20,10),(11,'114A',15,1),(12,'312',25,2),(13,'101',20,3),(14,'201',35,4),(15,'303',30,5),(16,'305',25,6),(17,'302',45,7),(18,'404',35,8),(19,'214',15,9),(20,'308',20,10),(21,'115',50,1),(22,'305A',30,2),(23,'103',25,3),(24,'202',40,4),(25,'204',35,5),(26,'309',20,6),(27,'303A',50,7),(28,'401',40,8),(29,'216',30,9),(30,'310',20,10);
+INSERT INTO `classroom` VALUES (1,'114',50,1),(2,'304',30,2),(3,'102',25,3),(4,'203',40,4),(5,'205',35,5),(6,'307',20,6),(7,'301',50,7),(8,'402',40,8),(9,'212',30,9),(10,'306',20,10),(11,'114A',15,1),(12,'312',25,2),(13,'101',20,3),(14,'201',35,4),(15,'303',30,5),(16,'305',25,6),(17,'302',45,7),(18,'404',35,8),(19,'214',15,9),(20,'308',20,10),(21,'115',50,1),(22,'305A',30,2),(23,'103',25,3),(24,'202',40,4),(25,'204',35,5),(26,'309',20,6);
 /*!40000 ALTER TABLE `classroom` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,7 +227,7 @@ CREATE TABLE `department` (
   PRIMARY KEY (`department_id`),
   KEY `building_id` (`building_id`),
   CONSTRAINT `department_ibfk_1` FOREIGN KEY (`building_id`) REFERENCES `building` (`building_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,7 +236,7 @@ CREATE TABLE `department` (
 
 LOCK TABLES `department` WRITE;
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
-INSERT INTO `department` VALUES (1,'Computer Science',1000000.00,'John Smith',1),(2,'Biology',2000000.00,'Emily Brown',2),(3,'Chemistry',1800000.00,'Adam Lee',3),(4,'Mathematics',1600000.00,'Karen Chen',4),(5,'Physics',1900000.00,'Michael Kim',5),(6,'Psychology',1700000.00,'Julia Nguyen',6),(7,'English',1400000.00,'David Wilson',7),(8,'History',1200000.00,'Alex Martin',8),(9,'Political Science',1300000.00,'Samantha Lee',9),(10,'Business',2200000.00,'Peter Kim',10),(11,'Art',800000.00,'Linda Chen',1),(12,'Music',900000.00,'William Davis',2),(13,'Journalism',750000.00,'Grace Park',3),(14,'Philosophy',850000.00,'Daniel Lee',4),(15,'Education',1000000.00,'Mary Johnson',5),(16,'Economics',1100000.00,'George Brown',6),(17,'Sociology',950000.00,'Sophia Kim',7),(18,'Theater',700000.00,'Nathan Chen',8),(19,'Architecture',1200000.00,'Oliver Davis',9),(20,'Engineering',2500000.00,'Jennifer Lee',10),(21,'Philology',700000.00,'Emily Wilson',1),(22,'Statistics',1300000.00,'Steven Kim',2),(23,'Anthropology',900000.00,'Andrew Park',3),(24,'Environmental Science',1100000.00,'Mia Brown',4),(25,'Public Health',1900000.00,'Hannah Lee',5);
+INSERT INTO `department` VALUES (1,'Computer Science',1500000.00,'John Smith',1),(2,'Biology',2000000.00,'Emily Brown',2),(3,'Chemistry',1800000.00,'Adam Lee',3),(4,'Mathematics',1600000.00,'Karen Chen',4),(5,'Physics',1900000.00,'Michael Kim',5),(6,'Psychology',1700000.00,'Julia Nguyen',6),(7,'English',1400000.00,'David Wilson',7),(8,'History',1200000.00,'Alex Martin',8),(9,'Political Science',1300000.00,'Samantha Lee',9),(10,'Engineering',2500000.00,'Jennifer Lee',10);
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -345,7 +345,7 @@ CREATE TABLE `professor` (
   PRIMARY KEY (`staff_id`),
   KEY `department_id` (`department_id`),
   CONSTRAINT `professor_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -354,7 +354,7 @@ CREATE TABLE `professor` (
 
 LOCK TABLES `professor` WRITE;
 /*!40000 ALTER TABLE `professor` DISABLE KEYS */;
-INSERT INTO `professor` VALUES (2,'Joe Doe','1983-01-01','TENURED',1234567890,'joe.doe@example.com','professor',1),(42,'Rebecca Davis','1975-08-02','TENURE_TRACK',12345678,'rebecca.davis@neu.edu','professor',1),(43,'Jordan Ortiz','1978-06-14','TENURED',23456789,'jordan.ortiz@neu.edu','professor',2),(44,'Shannon Peterson','1982-11-21','NON_TENURE_TRACK',34567890,'shannon.peterson@neu.edu','professor',3),(45,'Megan Cox','1979-02-16','TENURED',45678901,'megan.cox@neu.edu','professor',4),(46,'Benjamin Lee','1985-07-19','TENURE_TRACK',56789012,'benjamin.lee@neu.edu','professor',5),(47,'Samantha Flores','1988-04-26','NON_TENURE_TRACK',67890123,'samantha.flores@neu.edu','professor',6),(48,'Dylan Kim','1972-09-12','TENURED',78901234,'dylan.kim@neu.edu','professor',7),(49,'Emma Ramirez','1976-01-08','TENURE_TRACK',89012345,'emma.ramirez@neu.edu','professor',8),(50,'Cameron Richardson','1981-05-03','NON_TENURE_TRACK',90123456,'cameron.richardson@neu.edu','professor',9),(51,'Hannah Turner','1974-12-27','TENURED',12347890,'hannah.turner@neu.edu','professor',10),(52,'Owen Parker','1983-08-11','TENURE_TRACK',23458901,'owen.parker@neu.edu','professor',11),(53,'Avery Collins','1987-03-24','NON_TENURE_TRACK',34569012,'avery.collins@neu.edu','professor',12),(54,'Isaac Cooper','1977-10-10','TENURED',45670123,'isaac.cooper@neu.edu','professor',13),(55,'Olivia Hernandez','1980-12-04','TENURE_TRACK',56781234,'olivia.hernandez@neu.edu','professor',14),(56,'Levi Ward','1984-06-17','NON_TENURE_TRACK',67892345,'levi.ward@neu.edu','professor',15),(57,'Aria Gonzales','1973-01-22','TENURED',78903456,'aria.gonzales@neu.edu','professor',16),(58,'Ethan Lewis','1979-04-18','TENURE_TRACK',89014567,'ethan.lewis@neu.edu','professor',17),(59,'Chloe Jackson','1986-11-05','NON_TENURE_TRACK',90125678,'chloe.jackson@neu.edu','professor',18),(60,'Landon Wright','1975-02-28','TENURED',12346789,'landon.wright@neu.edu','professor',19),(61,'Lila Chen','1979-12-08','TENURED',85720368,'lchen@northeastern.edu','professor',7),(62,'Michael Scott','1985-06-22','TENURE_TRACK',85721984,'mscott@northeastern.edu','professor',2),(63,'Olivia Johnson','1989-03-15','TENURED',85720467,'ojohnson@northeastern.edu','professor',14),(64,'Ryan Wilson','1981-09-27','NON_TENURE_TRACK',85720185,'rwilson@northeastern.edu','professor',11),(65,'Samantha Lee','1983-07-30','TENURE_TRACK',85720734,'slee@northeastern.edu','professor',8),(66,'Thomas Lee','1976-02-14','TENURED',85720378,'tlee@northeastern.edu','professor',1),(67,'Vanessa Brown','1990-10-11','NON_TENURE_TRACK',85721456,'vbrown@northeastern.edu','professor',3),(68,'William Taylor','1988-05-19','TENURE_TRACK',85720567,'wtaylor@northeastern.edu','professor',13),(69,'Xavier Hernandez','1982-11-18','TENURED',85720127,'xhernandez@northeastern.edu','professor',10),(70,'Yvonne Davis','1977-04-09','NON_TENURE_TRACK',85720899,'ydavis@northeastern.edu','professor',4);
+INSERT INTO `professor` VALUES (1,'Rebecca Davis','1975-08-02','TENURE_TRACK',12345678,'rebecca.davis@neu.edu','professor',1),(2,'Jordan Ortiz','1978-06-14','TENURED',23456789,'jordan.ortiz@neu.edu','professor',2),(3,'Shannon Peterson','1982-11-21','NON_TENURE_TRACK',34567890,'shannon.peterson@neu.edu','professor',3),(4,'Megan Cox','1979-02-16','TENURED',45678901,'megan.cox@neu.edu','professor',4),(5,'Benjamin Lee','1985-07-19','TENURE_TRACK',56789012,'benjamin.lee@neu.edu','professor',5),(6,'Samantha Flores','1988-04-26','NON_TENURE_TRACK',67890123,'samantha.flores@neu.edu','professor',6),(7,'Dylan Kim','1972-09-12','TENURED',78901234,'dylan.kim@neu.edu','professor',7),(8,'Emma Ramirez','1976-01-08','TENURE_TRACK',89012345,'emma.ramirez@neu.edu','professor',8),(9,'Cameron Richardson','1981-05-03','NON_TENURE_TRACK',90123456,'cameron.richardson@neu.edu','professor',9),(10,'Hannah Turner','1974-12-27','TENURED',12347890,'hannah.turner@neu.edu','professor',10),(11,'Owen Parker','1983-08-11','TENURE_TRACK',23458901,'owen.parker@neu.edu','professor',7),(12,'Avery Collins','1987-03-24','NON_TENURE_TRACK',34569012,'avery.collins@neu.edu','professor',8),(13,'Isaac Cooper','1977-10-10','TENURED',45670123,'isaac.cooper@neu.edu','professor',10),(14,'Olivia Hernandez','1980-12-04','TENURE_TRACK',56781234,'olivia.hernandez@neu.edu','professor',6),(15,'Levi Ward','1984-06-17','NON_TENURE_TRACK',67892345,'levi.ward@neu.edu','professor',4),(16,'Aria Gonzales','1973-01-22','TENURED',78903456,'aria.gonzales@neu.edu','professor',5),(17,'Ethan Lewis','1979-04-18','TENURE_TRACK',89014567,'ethan.lewis@neu.edu','professor',7),(18,'Chloe Jackson','1986-11-05','NON_TENURE_TRACK',90125678,'chloe.jackson@neu.edu','professor',8),(19,'Landon Wright','1975-02-28','TENURED',12346789,'landon.wright@neu.edu','professor',9),(20,'Lila Chen','1979-12-08','TENURED',85720368,'lchen@northeastern.edu','professor',7),(21,'Michael Scott','1985-06-22','TENURE_TRACK',85721984,'mscott@northeastern.edu','professor',2),(22,'Olivia Johnson','1989-03-15','TENURED',85720467,'ojohnson@northeastern.edu','professor',4),(23,'Ryan Wilson','1981-09-27','NON_TENURE_TRACK',85720185,'rwilson@northeastern.edu','professor',1),(24,'Samantha Lee','1983-07-30','TENURE_TRACK',85720734,'slee@northeastern.edu','professor',8),(25,'Thomas Lee','1976-02-14','TENURED',85720378,'tlee@northeastern.edu','professor',1),(26,'Vanessa Brown','1990-10-11','NON_TENURE_TRACK',85721456,'vbrown@northeastern.edu','professor',3),(27,'William Taylor','1988-05-19','TENURE_TRACK',85720567,'wtaylor@northeastern.edu','professor',3),(28,'Xavier Hernandez','1982-11-18','TENURED',85720127,'xhernandez@northeastern.edu','professor',10),(29,'Yvonne Davis','1977-04-09','NON_TENURE_TRACK',85720899,'ydavis@northeastern.edu','professor',4);
 /*!40000 ALTER TABLE `professor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -385,16 +385,14 @@ DROP TABLE IF EXISTS `section`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `section` (
-  `section_id` int NOT NULL AUTO_INCREMENT,
   `section_number` int DEFAULT NULL,
   `course_id` int DEFAULT NULL,
   `sroom_id` int DEFAULT NULL,
-  PRIMARY KEY (`section_id`),
   KEY `course_id` (`course_id`),
   KEY `sroom_id` (`sroom_id`),
   CONSTRAINT `section_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
   CONSTRAINT `section_ibfk_2` FOREIGN KEY (`sroom_id`) REFERENCES `classroom` (`room_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -403,7 +401,7 @@ CREATE TABLE `section` (
 
 LOCK TABLES `section` WRITE;
 /*!40000 ALTER TABLE `section` DISABLE KEYS */;
-INSERT INTO `section` VALUES (1,1,1,1),(2,2,1,2),(3,3,1,3),(4,1,2,4),(5,2,2,5),(6,3,2,6),(7,1,3,7),(8,2,3,8),(9,1,4,9),(10,2,4,10),(11,3,4,11),(12,1,5,12),(13,2,5,13),(14,1,6,14),(15,2,6,15),(16,3,6,16),(17,1,7,17),(18,2,7,18),(19,1,8,19),(20,2,8,20),(21,1,9,21),(22,2,9,22),(23,3,9,23),(24,1,10,24),(25,2,10,25),(26,1,1,1),(27,2,1,2),(28,3,1,3),(29,1,2,4),(30,2,2,5),(31,3,2,6),(32,1,3,7),(33,2,3,8),(34,1,4,9),(35,2,4,10),(36,3,4,11),(37,1,5,12),(38,2,5,13),(39,1,6,14),(40,2,6,15),(41,3,6,16),(42,1,7,17),(43,2,7,18),(44,1,8,19),(45,2,8,20),(46,1,9,21),(47,2,9,22),(48,3,9,23),(49,1,10,24),(50,2,10,25);
+INSERT INTO `section` VALUES (1,1,1),(2,1,2),(3,1,3),(1,2,4),(2,2,5),(1,3,6),(2,3,7),(3,3,8),(1,4,9),(2,4,10),(1,5,11),(2,5,12),(3,5,13),(1,6,14),(2,6,15),(3,7,16),(1,8,17),(2,8,18),(3,8,19),(1,9,20),(2,9,21),(1,10,22),(2,10,23),(3,11,24),(1,12,25),(2,13,1),(3,14,2),(1,5,3),(2,6,4),(3,7,5),(2,15,6),(3,15,7),(1,16,8),(2,17,9),(3,18,10),(1,19,11),(2,20,12),(1,21,13),(2,22,14),(3,23,15),(3,24,16),(1,25,17),(2,26,18),(3,27,19),(1,28,20),(2,29,21);
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -497,12 +495,12 @@ CREATE TABLE `student` (
   `class_level` varchar(255) DEFAULT NULL,
   `grade` varchar(10) DEFAULT 'N/A',
   `role` varchar(50) DEFAULT 'student',
-  `section_id` int DEFAULT NULL,
+  `course_id` int DEFAULT NULL,
   `advisor_id` int DEFAULT NULL,
   PRIMARY KEY (`student_id`),
-  KEY `section_id` (`section_id`),
+  KEY `course_id` (`course_id`),
   KEY `advisor_id` (`advisor_id`),
-  CONSTRAINT `student_ibfk_1` FOREIGN KEY (`section_id`) REFERENCES `section` (`section_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `student_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `student_ibfk_2` FOREIGN KEY (`advisor_id`) REFERENCES `advisor` (`staff_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -545,16 +543,16 @@ DROP TABLE IF EXISTS `teaches`;
 CREATE TABLE `teaches` (
   `id` int NOT NULL AUTO_INCREMENT,
   `semester_id` int DEFAULT NULL,
-  `section_id` int DEFAULT NULL,
+  `course_id` int DEFAULT NULL,
   `staff_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `semester_id` (`semester_id`),
-  KEY `section_id` (`section_id`),
+  KEY `course_id` (`course_id`),
   KEY `staff_id` (`staff_id`),
   CONSTRAINT `teaches_ibfk_1` FOREIGN KEY (`semester_id`) REFERENCES `semester` (`semester_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `teaches_ibfk_2` FOREIGN KEY (`section_id`) REFERENCES `section` (`section_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `teaches_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `teaches_ibfk_3` FOREIGN KEY (`staff_id`) REFERENCES `professor` (`staff_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=355 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -563,7 +561,7 @@ CREATE TABLE `teaches` (
 
 LOCK TABLES `teaches` WRITE;
 /*!40000 ALTER TABLE `teaches` DISABLE KEYS */;
-INSERT INTO `teaches` VALUES (1,1,12,53),(2,1,34,67),(3,2,2,42),(4,2,45,50),(5,3,15,60),(6,3,22,55),(7,1,8,48),(8,2,10,66),(9,3,31,44),(10,1,16,57);
+INSERT INTO `teaches` VALUES (1,1,1,1),(2,1,1,23),(3,1,1,25),(4,1,2,1),(5,1,2,23),(6,1,2,25),(7,1,3,1),(8,1,3,23),(9,1,3,25),(16,1,4,21),(17,1,4,2),(18,1,5,21),(19,1,5,2),(20,1,6,21),(21,1,6,2),(23,2,1,1),(24,2,1,23),(25,2,1,25),(26,2,2,1),(27,2,2,23),(28,2,2,25),(29,2,3,1),(30,2,3,23),(31,2,3,25),(38,3,1,1),(39,3,1,23),(40,3,1,25),(41,3,2,1),(42,3,2,23),(43,3,2,25),(44,3,3,1),(45,3,3,23),(46,3,3,25),(53,2,4,21),(54,2,4,2),(55,2,5,21),(56,2,5,2),(57,2,6,21),(58,2,6,2),(60,3,4,21),(61,3,4,2),(62,3,5,21),(63,3,5,2),(64,3,6,21),(65,3,6,2),(67,1,7,3),(68,1,7,26),(69,1,7,27),(70,1,8,3),(71,1,8,26),(72,1,8,27),(73,1,9,3),(74,1,9,26),(75,1,9,27),(82,2,7,3),(83,2,7,26),(84,2,7,27),(85,2,8,3),(86,2,8,26),(87,2,8,27),(88,2,9,3),(89,2,9,26),(90,2,9,27),(97,3,7,3),(98,3,7,26),(99,3,7,27),(100,3,8,3),(101,3,8,26),(102,3,8,27),(103,3,9,3),(104,3,9,26),(105,3,9,27),(112,1,10,4),(113,1,10,15),(114,1,10,22),(115,1,10,29),(116,1,11,4),(117,1,11,15),(118,1,11,22),(119,1,11,29),(120,1,12,4),(121,1,12,15),(122,1,12,22),(123,1,12,29),(127,2,10,4),(128,2,10,15),(129,2,10,22),(130,2,10,29),(131,2,11,4),(132,2,11,15),(133,2,11,22),(134,2,11,29),(135,2,12,4),(136,2,12,15),(137,2,12,22),(138,2,12,29),(142,3,10,4),(143,3,10,15),(144,3,10,22),(145,3,10,29),(146,3,11,4),(147,3,11,15),(148,3,11,22),(149,3,11,29),(150,3,12,4),(151,3,12,15),(152,3,12,22),(153,3,12,29),(157,1,13,16),(158,1,13,5),(159,1,14,16),(160,1,14,5),(161,1,15,16),(162,1,15,5),(164,2,13,16),(165,2,13,5),(166,2,14,16),(167,2,14,5),(168,2,15,16),(169,2,15,5),(171,3,13,16),(172,3,13,5),(173,3,14,16),(174,3,14,5),(175,3,15,16),(176,3,15,5),(178,1,16,14),(179,1,16,6),(180,1,17,14),(181,1,17,6),(182,1,18,14),(183,1,18,6),(185,2,16,14),(186,2,16,6),(187,2,17,14),(188,2,17,6),(189,2,18,14),(190,2,18,6),(192,3,16,14),(193,3,16,6),(194,3,17,14),(195,3,17,6),(196,3,18,14),(197,3,18,6),(199,1,19,7),(200,1,19,11),(201,1,19,17),(202,1,19,20),(203,1,20,7),(204,1,20,11),(205,1,20,17),(206,1,20,20),(207,1,21,7),(208,1,21,11),(209,1,21,17),(210,1,21,20),(214,2,19,7),(215,2,19,11),(216,2,19,17),(217,2,19,20),(218,2,20,7),(219,2,20,11),(220,2,20,17),(221,2,20,20),(222,2,21,7),(223,2,21,11),(224,2,21,17),(225,2,21,20),(229,3,19,7),(230,3,19,11),(231,3,19,17),(232,3,19,20),(233,3,20,7),(234,3,20,11),(235,3,20,17),(236,3,20,20),(237,3,21,7),(238,3,21,11),(239,3,21,17),(240,3,21,20),(244,1,22,8),(245,1,22,12),(246,1,22,18),(247,1,22,24),(248,1,23,8),(249,1,23,12),(250,1,23,18),(251,1,23,24),(252,1,24,8),(253,1,24,12),(254,1,24,18),(255,1,24,24),(259,2,22,8),(260,2,22,12),(261,2,22,18),(262,2,22,24),(263,2,23,8),(264,2,23,12),(265,2,23,18),(266,2,23,24),(267,2,24,8),(268,2,24,12),(269,2,24,18),(270,2,24,24),(274,3,22,8),(275,3,22,12),(276,3,22,18),(277,3,22,24),(278,3,23,8),(279,3,23,12),(280,3,23,18),(281,3,23,24),(282,3,24,8),(283,3,24,12),(284,3,24,18),(285,3,24,24),(289,1,25,19),(290,1,25,9),(291,1,26,19),(292,1,26,9),(293,1,27,19),(294,1,27,9),(296,2,25,19),(297,2,25,9),(298,2,26,19),(299,2,26,9),(300,2,27,19),(301,2,27,9),(303,3,25,19),(304,3,25,9),(305,3,26,19),(306,3,26,9),(307,3,27,19),(308,3,27,9),(310,1,28,10),(311,1,28,13),(312,1,28,28),(313,1,29,10),(314,1,29,13),(315,1,29,28),(316,1,30,10),(317,1,30,13),(318,1,30,28),(325,2,28,10),(326,2,28,13),(327,2,28,28),(328,2,29,10),(329,2,29,13),(330,2,29,28),(331,2,30,10),(332,2,30,13),(333,2,30,28),(340,3,28,10),(341,3,28,13),(342,3,28,28),(343,3,29,10),(344,3,29,13),(345,3,29,28),(346,3,30,10),(347,3,30,13),(348,3,30,28);
 /*!40000 ALTER TABLE `teaches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -578,7 +576,8 @@ CREATE TABLE `user` (
   `user_id` int DEFAULT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `role` enum('student','professor','advisor','club_head') NOT NULL
+  `role` enum('student','professor','advisor','club_head') NOT NULL,
+  `pass_updated` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -588,7 +587,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'jn.mith@example.com','password123','advisor'),(2,'joe.doe@example.com','password123','professor'),(42,'rebecca.davis@neu.edu','password123','professor'),(43,'jordan.ortiz@neu.edu','password123','professor'),(44,'shannon.peterson@neu.edu','password123','professor'),(45,'megan.cox@neu.edu','password123','professor'),(46,'benjamin.lee@neu.edu','password123','professor'),(47,'samantha.flores@neu.edu','password123','professor'),(48,'dylan.kim@neu.edu','password123','professor'),(49,'emma.ramirez@neu.edu','password123','professor'),(50,'cameron.richardson@neu.edu','password123','professor'),(51,'hannah.turner@neu.edu','password123','professor'),(52,'owen.parker@neu.edu','password123','professor'),(53,'avery.collins@neu.edu','password123','professor'),(54,'isaac.cooper@neu.edu','password123','professor'),(55,'olivia.hernandez@neu.edu','password123','professor'),(56,'levi.ward@neu.edu','password123','professor'),(57,'aria.gonzales@neu.edu','password123','professor'),(58,'ethan.lewis@neu.edu','password123','professor'),(59,'chloe.jackson@neu.edu','password123','professor'),(60,'landon.wright@neu.edu','password123','professor'),(61,'lchen@northeastern.edu','password123','professor'),(62,'mscott@northeastern.edu','password123','professor'),(63,'ojohnson@northeastern.edu','password123','professor'),(64,'rwilson@northeastern.edu','password123','professor'),(65,'slee@northeastern.edu','password123','professor'),(66,'tlee@northeastern.edu','password123','professor'),(67,'vbrown@northeastern.edu','password123','professor'),(68,'wtaylor@northeastern.edu','password123','professor'),(69,'xhernandez@northeastern.edu','password123','professor'),(70,'ydavis@northeastern.edu','password123','professor'),(2,'ajohnson@northeastern.edu','password123','advisor'),(3,'blee@northeastern.edu','password123','advisor'),(4,'cbrown@northeastern.edu','password123','advisor'),(5,'dchen@northeastern.edu','password123','advisor'),(6,'edavis@northeastern.edu','password123','advisor'),(7,'ftaylor@northeastern.edu','password123','advisor'),(8,'ghernandez@northeastern.edu','password123','advisor'),(9,'hwilson@northeastern.edu','password123','advisor'),(10,'ijohnson@northeastern.edu','password123','advisor'),(11,'jsmith@northeastern.edu','password123','advisor'),(101,'amysmith@gmail.com','password123','student'),(102,'bjohnson@yahoo.com','password123','student'),(103,'carlawill@gmail.com','password123','student'),(104,'davidlee@hotmail.com','password123','student'),(105,'echen@yahoo.com','password123','student'),(106,'frankrod@gmail.com','password123','student'),(107,'gracekim@hotmail.com','password123','student'),(108,'hnguyen@gmail.com','password123','student'),(109,'isataylor@yahoo.com','password123','student'),(110,'jbrown@hotmail.com','password123','student'),(111,'katlee@gmail.com','password123','student'),(112,'ljohnson@yahoo.com','password123','student'),(113,'miadavis@gmail.com','password123','student'),(114,'nkim@hotmail.com','password123','student'),(115,'ogarcia@yahoo.com','password123','student'),(116,'phernandez@gmail.com','password123','student'),(117,'qsmith@hotmail.com','password123','student'),(118,'rnguyen@yahoo.com','password123','student'),(119,'swilson@gmail.com','password123','student'),(120,'tbrown@yahoo.com','password123','student'),(1019,'lilabrown@northeastern.edu','password123','student'),(1020,'ethanturner@northeastern.edu','password123','student'),(1021,'averyscott@northeastern.edu','password123','student'),(1022,'miapeterson@northeastern.edu','password123','student'),(1023,'aidenevans@northeastern.edu','password123','student'),(1024,'gracemartinez@northeastern.edu','password123','student'),(1025,'lucasrodriguez@northeastern.edu','password123','student'),(1026,'hannahflores@northeastern.edu','password123','student'),(1027,'isachernandez@northeastern.edu','password123','student'),(1028,'oliviadavis@northeastern.edu','password123','student'),(1029,'davidlewis@northeastern.edu','password123','student'),(1030,'sofiaking@northeastern.edu','password123','student'),(1031,'jacksonbaker@northeastern.edu','password123','student'),(1032,'chloenelson@northeastern.edu','password123','student'),(1033,'elijahcarter@northeastern.edu','password123','student'),(1034,'avaperez@northeastern.edu','password123','student'),(1035,'loganturner@northeastern.edu','password123','student');
+INSERT INTO `user` VALUES (1,'rebecca.davis@neu.edu','password123','professor',0),(2,'jordan.ortiz@neu.edu','password123','professor',0),(3,'shannon.peterson@neu.edu','password123','professor',0),(4,'megan.cox@neu.edu','password123','professor',0),(5,'benjamin.lee@neu.edu','password123','professor',0),(6,'samantha.flores@neu.edu','password123','professor',0),(7,'dylan.kim@neu.edu','password123','professor',0),(8,'emma.ramirez@neu.edu','password123','professor',0),(9,'cameron.richardson@neu.edu','password123','professor',0),(10,'hannah.turner@neu.edu','password123','professor',0),(11,'owen.parker@neu.edu','password123','professor',0),(12,'avery.collins@neu.edu','password123','professor',0),(13,'isaac.cooper@neu.edu','password123','professor',0),(14,'olivia.hernandez@neu.edu','password123','professor',0),(15,'levi.ward@neu.edu','password123','professor',0),(16,'aria.gonzales@neu.edu','password123','professor',0),(17,'ethan.lewis@neu.edu','password123','professor',0),(18,'chloe.jackson@neu.edu','password123','professor',0),(19,'landon.wright@neu.edu','password123','professor',0),(20,'lchen@northeastern.edu','password123','professor',0),(21,'mscott@northeastern.edu','password123','professor',0),(22,'ojohnson@northeastern.edu','password123','professor',0),(23,'rwilson@northeastern.edu','password123','professor',0),(24,'slee@northeastern.edu','password123','professor',0),(25,'tlee@northeastern.edu','password123','professor',0),(26,'vbrown@northeastern.edu','password123','professor',0),(27,'wtaylor@northeastern.edu','password123','professor',0),(28,'xhernandez@northeastern.edu','password123','professor',0),(29,'ydavis@northeastern.edu','password123','professor',0),(1,'ajohnson@northeastern.edu','password123','advisor',0),(2,'blee@northeastern.edu','password123','advisor',0),(3,'cbrown@northeastern.edu','password123','advisor',0),(4,'dchen@northeastern.edu','password123','advisor',0),(5,'edavis@northeastern.edu','password123','advisor',0),(6,'ftaylor@northeastern.edu','password123','advisor',0),(7,'ghernandez@northeastern.edu','password123','advisor',0),(8,'hwilson@northeastern.edu','password123','advisor',0),(9,'ijohnson@northeastern.edu','password123','advisor',0),(10,'jsmith@northeastern.edu','password123','advisor',0),(11,'olivia.baker@northeastern.edu','password123','advisor',0),(12,'ethan.cooper@northeastern.edu','password123','advisor',0),(13,'avery.davis@northeastern.edu','password123','advisor',0),(14,'isabella.garcia@northeastern.edu','password123','advisor',0),(15,'jackson.kim@northeastern.edu','password123','advisor',0),(16,'sophie.lee@northeastern.edu','password123','advisor',0),(17,'caleb.miller@northeastern.edu','password123','advisor',0),(18,'natalie.nguyen@northeastern.edu','password123','advisor',0),(19,'levi.patel@northeastern.edu','password123','advisor',0),(20,'aria.smith@northeastern.edu','password123','advisor',0),(101,'amysmith@gmail.com','password123','student',0),(102,'bjohnson@yahoo.com','password123','student',0),(103,'carlawill@gmail.com','password123','student',0),(104,'davidlee@hotmail.com','password123','student',0),(105,'echen@yahoo.com','password123','student',0),(106,'frankrod@gmail.com','password123','student',0),(107,'gracekim@hotmail.com','password123','student',0),(108,'hnguyen@gmail.com','password123','student',0),(109,'isataylor@yahoo.com','password123','student',0),(110,'jbrown@hotmail.com','password123','student',0),(111,'katlee@gmail.com','password123','student',0),(112,'ljohnson@yahoo.com','password123','student',0),(113,'miadavis@gmail.com','password123','student',0),(114,'nkim@hotmail.com','password123','student',0),(115,'ogarcia@yahoo.com','password123','student',0),(116,'phernandez@gmail.com','password123','student',0),(117,'qsmith@hotmail.com','password123','student',0),(118,'rnguyen@yahoo.com','password123','student',0),(119,'swilson@gmail.com','password123','student',0),(120,'tbrown@yahoo.com','password123','student',0),(1019,'lilabrown@northeastern.edu','password123','student',0),(1020,'ethanturner@northeastern.edu','password123','student',0),(1021,'averyscott@northeastern.edu','password123','student',0),(1022,'miapeterson@northeastern.edu','password123','student',0),(1023,'aidenevans@northeastern.edu','password123','student',0),(1024,'gracemartinez@northeastern.edu','password123','student',0),(1025,'lucasrodriguez@northeastern.edu','password123','student',0),(1026,'hannahflores@northeastern.edu','password123','student',0),(1027,'isachernandez@northeastern.edu','password123','student',0),(1028,'oliviadavis@northeastern.edu','password123','student',0),(1029,'davidlewis@northeastern.edu','password123','student',0),(1030,'sofiaking@northeastern.edu','password123','student',0),(1031,'jacksonbaker@northeastern.edu','password123','student',0),(1032,'chloenelson@northeastern.edu','password123','student',0),(1033,'elijahcarter@northeastern.edu','password123','student',0),(1034,'avaperez@northeastern.edu','password123','student',0),(1035,'loganturner@northeastern.edu','password123','student',0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -599,6 +598,44 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'university_gp'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `password_update` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `password_update`(IN pass_user_name VARCHAR(50))
+BEGIN
+    SELECT pass_updated FROM user WHERE username = pass_user_name;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `update_password` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_password`(IN p_user_name VARCHAR(50), IN p_new_password VARCHAR(255))
+BEGIN
+    UPDATE user SET password = p_new_password, pass_updated=1 WHERE username = p_user_name;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -609,4 +646,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-05 10:49:55
+-- Dump completed on 2023-04-05 22:56:18
