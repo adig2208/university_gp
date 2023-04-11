@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `university_gp` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `university_gp`;
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: localhost    Database: university_gp
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version	8.0.28
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -44,7 +44,7 @@ CREATE TABLE `advisor` (
 
 LOCK TABLES `advisor` WRITE;
 /*!40000 ALTER TABLE `advisor` DISABLE KEYS */;
-INSERT INTO `advisor` VALUES (1,'Alex Johnson','1982-07-12',85721423,'ajohnson@northeastern.edu','advisor',1),(2,'Brenda Lee','1985-01-30',85720976,'blee@northeastern.edu','advisor',2),(3,'Charlie Brown','1979-09-22',85720875,'cbrown@northeastern.edu','advisor',3),(4,'David Chen','1988-04-13',85720132,'dchen@northeastern.edu','advisor',4),(5,'Emily Davis','1992-11-27',85720742,'edavis@northeastern.edu','advisor',5),(6,'Frank Taylor','1980-06-19',85720258,'ftaylor@northeastern.edu','advisor',6),(7,'Grace Hernandez','1975-03-14',85720345,'ghernandez@northeastern.edu','advisor',7),(8,'Henry Wilson','1983-08-08',85720567,'hwilson@northeastern.edu','advisor',8),(9,'Isabella Johnson','1990-05-05',85721145,'ijohnson@northeastern.edu','advisor',9),(10,'Jake Smith','1977-12-28',85720987,'jsmith@northeastern.edu','advisor',10),(11,'Olivia Baker','1992-05-07',12345678,'olivia.baker@northeastern.edu','advisor',1),(12,'Ethan Cooper','1987-08-21',23456789,'ethan.cooper@northeastern.edu','advisor',2),(13,'Avery Davis','1980-11-12',34567890,'avery.davis@northeastern.edu','advisor',3),(14,'Isabella Garcia','1995-02-16',45678901,'isabella.garcia@northeastern.edu','advisor',4),(15,'Jackson Kim','1983-06-09',56789012,'jackson.kim@northeastern.edu','advisor',5),(16,'Sophie Lee','1990-12-22',67890123,'sophie.lee@northeastern.edu','advisor',6),(17,'Caleb Miller','1977-03-03',78901234,'caleb.miller@northeastern.edu','advisor',7),(18,'Natalie Nguyen','1993-09-18',89012345,'natalie.nguyen@northeastern.edu','advisor',8),(19,'Levi Patel','1988-04-30',90123456,'levi.patel@northeastern.edu','advisor',9),(20,'Aria Smith','1981-01-24',12345678,'aria.smith@northeastern.edu','advisor',10);
+INSERT INTO `advisor` VALUES (1,'Alex Johnson','1982-07-12',12345628,'ajohnson@northeastern.edu','advisor',1),(2,'Brenda Lee','1985-01-30',85720976,'blee@northeastern.edu','advisor',2),(3,'Charlie Brown','1979-09-22',85720875,'cbrown@northeastern.edu','advisor',3),(4,'David Chen','1988-04-13',85720132,'dchen@northeastern.edu','advisor',4),(5,'Emily Davis','1992-11-27',85720742,'edavis@northeastern.edu','advisor',5),(6,'Frank Taylor','1980-06-19',85720258,'ftaylor@northeastern.edu','advisor',6),(7,'Grace Hernandez','1975-03-14',85720345,'ghernandez@northeastern.edu','advisor',7),(8,'Henry Wilson','1983-08-08',85720567,'hwilson@northeastern.edu','advisor',8),(9,'Isabella Johnson','1990-05-05',85721145,'ijohnson@northeastern.edu','advisor',9),(10,'Jake Smith','1977-12-28',85720987,'jsmith@northeastern.edu','advisor',10),(11,'Olivia Baker','1992-05-07',12345678,'olivia.baker@northeastern.edu','advisor',1),(12,'Ethan Cooper','1987-08-21',23456789,'ethan.cooper@northeastern.edu','advisor',2),(13,'Avery Davis','1980-11-12',34567890,'avery.davis@northeastern.edu','advisor',3),(14,'Isabella Garcia','1995-02-16',45678901,'isabella.garcia@northeastern.edu','advisor',4),(15,'Jackson Kim','1983-06-09',56789012,'jackson.kim@northeastern.edu','advisor',5),(16,'Sophie Lee','1990-12-22',67890123,'sophie.lee@northeastern.edu','advisor',6),(17,'Caleb Miller','1977-03-03',78901234,'caleb.miller@northeastern.edu','advisor',7),(18,'Natalie Nguyen','1993-09-18',89012345,'natalie.nguyen@northeastern.edu','advisor',8),(19,'Levi Patel','1988-04-30',90123456,'levi.patel@northeastern.edu','advisor',9),(20,'Aria Smith','1981-01-24',12345678,'aria.smith@northeastern.edu','advisor',10);
 /*!40000 ALTER TABLE `advisor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -86,7 +86,7 @@ CREATE TABLE `appointments` (
   CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`advisor_id`) REFERENCES `advisor` (`staff_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `appointments_ibfk_3` FOREIGN KEY (`slot_id`) REFERENCES `slots` (`slot_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +95,7 @@ CREATE TABLE `appointments` (
 
 LOCK TABLES `appointments` WRITE;
 /*!40000 ALTER TABLE `appointments` DISABLE KEYS */;
+INSERT INTO `appointments` VALUES (1,101,1,2,1);
 /*!40000 ALTER TABLE `appointments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -354,7 +355,7 @@ CREATE TABLE `professor` (
 
 LOCK TABLES `professor` WRITE;
 /*!40000 ALTER TABLE `professor` DISABLE KEYS */;
-INSERT INTO `professor` VALUES (1,'Rebecca Davis','1975-08-02','TENURE_TRACK',12345678,'rebecca.davis@neu.edu','professor',1),(2,'Jordan Ortiz','1978-06-14','TENURED',23456789,'jordan.ortiz@neu.edu','professor',2),(3,'Shannon Peterson','1982-11-21','NON_TENURE_TRACK',34567890,'shannon.peterson@neu.edu','professor',3),(4,'Megan Cox','1979-02-16','TENURED',45678901,'megan.cox@neu.edu','professor',4),(5,'Benjamin Lee','1985-07-19','TENURE_TRACK',56789012,'benjamin.lee@neu.edu','professor',5),(6,'Samantha Flores','1988-04-26','NON_TENURE_TRACK',67890123,'samantha.flores@neu.edu','professor',6),(7,'Dylan Kim','1972-09-12','TENURED',78901234,'dylan.kim@neu.edu','professor',7),(8,'Emma Ramirez','1976-01-08','TENURE_TRACK',89012345,'emma.ramirez@neu.edu','professor',8),(9,'Cameron Richardson','1981-05-03','NON_TENURE_TRACK',90123456,'cameron.richardson@neu.edu','professor',9),(10,'Hannah Turner','1974-12-27','TENURED',12347890,'hannah.turner@neu.edu','professor',10),(11,'Owen Parker','1983-08-11','TENURE_TRACK',23458901,'owen.parker@neu.edu','professor',7),(12,'Avery Collins','1987-03-24','NON_TENURE_TRACK',34569012,'avery.collins@neu.edu','professor',8),(13,'Isaac Cooper','1977-10-10','TENURED',45670123,'isaac.cooper@neu.edu','professor',10),(14,'Olivia Hernandez','1980-12-04','TENURE_TRACK',56781234,'olivia.hernandez@neu.edu','professor',6),(15,'Levi Ward','1984-06-17','NON_TENURE_TRACK',67892345,'levi.ward@neu.edu','professor',4),(16,'Aria Gonzales','1973-01-22','TENURED',78903456,'aria.gonzales@neu.edu','professor',5),(17,'Ethan Lewis','1979-04-18','TENURE_TRACK',89014567,'ethan.lewis@neu.edu','professor',7),(18,'Chloe Jackson','1986-11-05','NON_TENURE_TRACK',90125678,'chloe.jackson@neu.edu','professor',8),(19,'Landon Wright','1975-02-28','TENURED',12346789,'landon.wright@neu.edu','professor',9),(20,'Lila Chen','1979-12-08','TENURED',85720368,'lchen@northeastern.edu','professor',7),(21,'Michael Scott','1985-06-22','TENURE_TRACK',85721984,'mscott@northeastern.edu','professor',2),(22,'Olivia Johnson','1989-03-15','TENURED',85720467,'ojohnson@northeastern.edu','professor',4),(23,'Ryan Wilson','1981-09-27','NON_TENURE_TRACK',85720185,'rwilson@northeastern.edu','professor',1),(24,'Samantha Lee','1983-07-30','TENURE_TRACK',85720734,'slee@northeastern.edu','professor',8),(25,'Thomas Lee','1976-02-14','TENURED',85720378,'tlee@northeastern.edu','professor',1),(26,'Vanessa Brown','1990-10-11','NON_TENURE_TRACK',85721456,'vbrown@northeastern.edu','professor',3),(27,'William Taylor','1988-05-19','TENURE_TRACK',85720567,'wtaylor@northeastern.edu','professor',3),(28,'Xavier Hernandez','1982-11-18','TENURED',85720127,'xhernandez@northeastern.edu','professor',10),(29,'Yvonne Davis','1977-04-09','NON_TENURE_TRACK',85720899,'ydavis@northeastern.edu','professor',4);
+INSERT INTO `professor` VALUES (1,'Rebecca Davis ','1975-08-02','TENURE_TRACK',12345678,'rebecca.davis@neu.edu','professor',1),(2,'Jordan Ortiz','1978-06-14','TENURED',23456789,'jordan.ortiz@neu.edu','professor',2),(3,'Shannon Peterson','1982-11-21','NON_TENURE_TRACK',34567890,'shannon.peterson@neu.edu','professor',3),(4,'Megan Cox','1979-02-16','TENURED',45678901,'megan.cox@neu.edu','professor',4),(5,'Benjamin Lee','1985-07-19','TENURE_TRACK',56789012,'benjamin.lee@neu.edu','professor',5),(6,'Samantha Flores','1988-04-26','NON_TENURE_TRACK',67890123,'samantha.flores@neu.edu','professor',6),(7,'Dylan Kim','1972-09-12','TENURED',78901234,'dylan.kim@neu.edu','professor',7),(8,'Emma Ramirez','1976-01-08','TENURE_TRACK',89012345,'emma.ramirez@neu.edu','professor',8),(9,'Cameron Richardson','1981-05-03','NON_TENURE_TRACK',90123456,'cameron.richardson@neu.edu','professor',9),(10,'Hannah Turner','1974-12-27','TENURED',12347890,'hannah.turner@neu.edu','professor',10),(11,'Owen Parker','1983-08-11','TENURE_TRACK',23458901,'owen.parker@neu.edu','professor',7),(12,'Avery Collins','1987-03-24','NON_TENURE_TRACK',34569012,'avery.collins@neu.edu','professor',8),(13,'Isaac Cooper','1977-10-10','TENURED',45670123,'isaac.cooper@neu.edu','professor',10),(14,'Olivia Hernandez','1980-12-04','TENURE_TRACK',56781234,'olivia.hernandez@neu.edu','professor',6),(15,'Levi Ward','1984-06-17','NON_TENURE_TRACK',67892345,'levi.ward@neu.edu','professor',4),(16,'Aria Gonzales','1973-01-22','TENURED',78903456,'aria.gonzales@neu.edu','professor',5),(17,'Ethan Lewis','1979-04-18','TENURE_TRACK',89014567,'ethan.lewis@neu.edu','professor',7),(18,'Chloe Jackson','1986-11-05','NON_TENURE_TRACK',90125678,'chloe.jackson@neu.edu','professor',8),(19,'Landon Wright','1975-02-28','TENURED',12346789,'landon.wright@neu.edu','professor',9),(20,'Lila Chen','1979-12-08','TENURED',85720368,'lchen@northeastern.edu','professor',7),(21,'Michael Scott','1985-06-22','TENURE_TRACK',85721984,'mscott@northeastern.edu','professor',2),(22,'Olivia Johnson','1989-03-15','TENURED',85720467,'ojohnson@northeastern.edu','professor',4),(23,'Ryan Wilson','1981-09-27','NON_TENURE_TRACK',85720185,'rwilson@northeastern.edu','professor',1),(24,'Samantha Lee','1983-07-30','TENURE_TRACK',85720734,'slee@northeastern.edu','professor',8),(25,'Thomas Lee','1976-02-14','TENURED',85720378,'tlee@northeastern.edu','professor',1),(26,'Vanessa Brown','1990-10-11','NON_TENURE_TRACK',85721456,'vbrown@northeastern.edu','professor',3),(27,'William Taylor','1988-05-19','TENURE_TRACK',85720567,'wtaylor@northeastern.edu','professor',3),(28,'Xavier Hernandez','1982-11-18','TENURED',85720127,'xhernandez@northeastern.edu','professor',10),(29,'Yvonne Davis','1977-04-09','NON_TENURE_TRACK',85720899,'ydavis@northeastern.edu','professor',4);
 /*!40000 ALTER TABLE `professor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -455,29 +456,9 @@ CREATE TABLE `slots` (
 
 LOCK TABLES `slots` WRITE;
 /*!40000 ALTER TABLE `slots` DISABLE KEYS */;
-INSERT INTO `slots` VALUES (1,'10:00:00','11:00:00',1,2),(2,'11:30:00','12:30:00',1,1),(3,'13:00:00','14:00:00',1,3),(4,'14:30:00','15:30:00',1,5),(5,'16:00:00','17:00:00',1,7),(6,'10:00:00','11:00:00',1,9),(7,'11:30:00','12:30:00',1,8),(8,'13:00:00','14:00:00',1,10),(9,'14:30:00','15:30:00',1,4),(10,'16:00:00','17:00:00',1,6),(11,'10:00:00','11:00:00',1,1),(12,'11:30:00','12:30:00',1,3),(13,'13:00:00','14:00:00',1,2),(14,'14:30:00','15:30:00',1,4),(15,'16:00:00','17:00:00',1,5);
+INSERT INTO `slots` VALUES (1,'10:00:00','11:00:00',1,2),(2,'11:30:00','12:30:00',2,1),(3,'13:00:00','14:00:00',1,3),(4,'14:30:00','15:30:00',1,5),(5,'16:00:00','17:00:00',1,7),(6,'10:00:00','11:00:00',1,9),(7,'11:30:00','12:30:00',1,8),(8,'13:00:00','14:00:00',1,10),(9,'14:30:00','15:30:00',1,4),(10,'16:00:00','17:00:00',1,6),(11,'10:00:00','11:00:00',1,1),(12,'11:30:00','12:30:00',1,3),(13,'13:00:00','14:00:00',1,2),(14,'14:30:00','15:30:00',1,4),(15,'16:00:00','17:00:00',1,5);
 /*!40000 ALTER TABLE `slots` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `insert_appointment` AFTER UPDATE ON `slots` FOR EACH ROW BEGIN
-    IF NEW.slot_status = 'booked' THEN
-        INSERT INTO Appointments (student_id, advisor_id, slot_id, app_status)
-        VALUES (SESSION_ID(), NEW.advisor_id, NEW.slot_id, 'pending');
-    END IF;
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `student`
@@ -587,17 +568,127 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'rebecca.davis@neu.edu','password123','professor',0),(2,'jordan.ortiz@neu.edu','password123','professor',0),(3,'shannon.peterson@neu.edu','password123','professor',0),(4,'megan.cox@neu.edu','password123','professor',0),(5,'benjamin.lee@neu.edu','password123','professor',0),(6,'samantha.flores@neu.edu','password123','professor',0),(7,'dylan.kim@neu.edu','password123','professor',0),(8,'emma.ramirez@neu.edu','password123','professor',0),(9,'cameron.richardson@neu.edu','password123','professor',0),(10,'hannah.turner@neu.edu','password123','professor',0),(11,'owen.parker@neu.edu','password123','professor',0),(12,'avery.collins@neu.edu','password123','professor',0),(13,'isaac.cooper@neu.edu','password123','professor',0),(14,'olivia.hernandez@neu.edu','password123','professor',0),(15,'levi.ward@neu.edu','password123','professor',0),(16,'aria.gonzales@neu.edu','password123','professor',0),(17,'ethan.lewis@neu.edu','password123','professor',0),(18,'chloe.jackson@neu.edu','password123','professor',0),(19,'landon.wright@neu.edu','password123','professor',0),(20,'lchen@northeastern.edu','password123','professor',0),(21,'mscott@northeastern.edu','password123','professor',0),(22,'ojohnson@northeastern.edu','password123','professor',0),(23,'rwilson@northeastern.edu','password123','professor',0),(24,'slee@northeastern.edu','password123','professor',0),(25,'tlee@northeastern.edu','password123','professor',0),(26,'vbrown@northeastern.edu','password123','professor',0),(27,'wtaylor@northeastern.edu','password123','professor',0),(28,'xhernandez@northeastern.edu','password123','professor',0),(29,'ydavis@northeastern.edu','password123','professor',0),(1,'ajohnson@northeastern.edu','password123','advisor',0),(2,'blee@northeastern.edu','password123','advisor',0),(3,'cbrown@northeastern.edu','password123','advisor',0),(4,'dchen@northeastern.edu','password123','advisor',0),(5,'edavis@northeastern.edu','password123','advisor',0),(6,'ftaylor@northeastern.edu','password123','advisor',0),(7,'ghernandez@northeastern.edu','password123','advisor',0),(8,'hwilson@northeastern.edu','password123','advisor',0),(9,'ijohnson@northeastern.edu','password123','advisor',0),(10,'jsmith@northeastern.edu','password123','advisor',0),(11,'olivia.baker@northeastern.edu','password123','advisor',0),(12,'ethan.cooper@northeastern.edu','password123','advisor',0),(13,'avery.davis@northeastern.edu','password123','advisor',0),(14,'isabella.garcia@northeastern.edu','password123','advisor',0),(15,'jackson.kim@northeastern.edu','password123','advisor',0),(16,'sophie.lee@northeastern.edu','password123','advisor',0),(17,'caleb.miller@northeastern.edu','password123','advisor',0),(18,'natalie.nguyen@northeastern.edu','password123','advisor',0),(19,'levi.patel@northeastern.edu','password123','advisor',0),(20,'aria.smith@northeastern.edu','password123','advisor',0),(101,'amysmith@gmail.com','password123','student',0),(102,'bjohnson@yahoo.com','password123','student',0),(103,'carlawill@gmail.com','password123','student',0),(104,'davidlee@hotmail.com','password123','student',0),(105,'echen@yahoo.com','password123','student',0),(106,'frankrod@gmail.com','password123','student',0),(107,'gracekim@hotmail.com','password123','student',0),(108,'hnguyen@gmail.com','password123','student',0),(109,'isataylor@yahoo.com','password123','student',0),(110,'jbrown@hotmail.com','password123','student',0),(111,'katlee@gmail.com','password123','student',0),(112,'ljohnson@yahoo.com','password123','student',0),(113,'miadavis@gmail.com','password123','student',0),(114,'nkim@hotmail.com','password123','student',0),(115,'ogarcia@yahoo.com','password123','student',0),(116,'phernandez@gmail.com','password123','student',0),(117,'qsmith@hotmail.com','password123','student',0),(118,'rnguyen@yahoo.com','password123','student',0),(119,'swilson@gmail.com','password123','student',0),(120,'tbrown@yahoo.com','password123','student',0),(1019,'lilabrown@northeastern.edu','password123','student',0),(1020,'ethanturner@northeastern.edu','password123','student',0),(1021,'averyscott@northeastern.edu','password123','student',0),(1022,'miapeterson@northeastern.edu','password123','student',0),(1023,'aidenevans@northeastern.edu','password123','student',0),(1024,'gracemartinez@northeastern.edu','password123','student',0),(1025,'lucasrodriguez@northeastern.edu','password123','student',0),(1026,'hannahflores@northeastern.edu','password123','student',0),(1027,'isachernandez@northeastern.edu','password123','student',0),(1028,'oliviadavis@northeastern.edu','password123','student',0),(1029,'davidlewis@northeastern.edu','password123','student',0),(1030,'sofiaking@northeastern.edu','password123','student',0),(1031,'jacksonbaker@northeastern.edu','password123','student',0),(1032,'chloenelson@northeastern.edu','password123','student',0),(1033,'elijahcarter@northeastern.edu','password123','student',0),(1034,'avaperez@northeastern.edu','password123','student',0),(1035,'loganturner@northeastern.edu','password123','student',0);
+INSERT INTO `user` VALUES (1,'rebecca.davis@neu.edu','abcd','professor',1),(2,'jordan.ortiz@neu.edu','abcd','professor',1),(3,'shannon.peterson@neu.edu','password123','professor',0),(4,'megan.cox@neu.edu','password123','professor',0),(5,'benjamin.lee@neu.edu','password123','professor',0),(6,'samantha.flores@neu.edu','password123','professor',0),(7,'dylan.kim@neu.edu','password123','professor',0),(8,'emma.ramirez@neu.edu','password123','professor',0),(9,'cameron.richardson@neu.edu','password123','professor',0),(10,'hannah.turner@neu.edu','password123','professor',0),(11,'owen.parker@neu.edu','password123','professor',0),(12,'avery.collins@neu.edu','password123','professor',0),(13,'isaac.cooper@neu.edu','password123','professor',0),(14,'olivia.hernandez@neu.edu','password123','professor',0),(15,'levi.ward@neu.edu','password123','professor',0),(16,'aria.gonzales@neu.edu','password123','professor',0),(17,'ethan.lewis@neu.edu','password123','professor',0),(18,'chloe.jackson@neu.edu','password123','professor',0),(19,'landon.wright@neu.edu','password123','professor',0),(20,'lchen@northeastern.edu','password123','professor',0),(21,'mscott@northeastern.edu','password123','professor',0),(22,'ojohnson@northeastern.edu','password123','professor',0),(23,'rwilson@northeastern.edu','password123','professor',0),(24,'slee@northeastern.edu','password123','professor',0),(25,'tlee@northeastern.edu','password123','professor',0),(26,'vbrown@northeastern.edu','password123','professor',0),(27,'wtaylor@northeastern.edu','password123','professor',0),(28,'xhernandez@northeastern.edu','password123','professor',0),(29,'ydavis@northeastern.edu','password123','professor',0),(1,'ajohnson@northeastern.edu','abcd','advisor',1),(2,'blee@northeastern.edu','password123','advisor',0),(3,'cbrown@northeastern.edu','password123','advisor',0),(4,'dchen@northeastern.edu','password123','advisor',0),(5,'edavis@northeastern.edu','password123','advisor',0),(6,'ftaylor@northeastern.edu','password123','advisor',0),(7,'ghernandez@northeastern.edu','password123','advisor',0),(8,'hwilson@northeastern.edu','password123','advisor',0),(9,'ijohnson@northeastern.edu','password123','advisor',0),(10,'jsmith@northeastern.edu','password123','advisor',0),(11,'olivia.baker@northeastern.edu','password123','advisor',0),(12,'ethan.cooper@northeastern.edu','password123','advisor',0),(13,'avery.davis@northeastern.edu','password123','advisor',0),(14,'isabella.garcia@northeastern.edu','password123','advisor',0),(15,'jackson.kim@northeastern.edu','password123','advisor',0),(16,'sophie.lee@northeastern.edu','password123','advisor',0),(17,'caleb.miller@northeastern.edu','password123','advisor',0),(18,'natalie.nguyen@northeastern.edu','password123','advisor',0),(19,'levi.patel@northeastern.edu','password123','advisor',0),(20,'aria.smith@northeastern.edu','password123','advisor',0),(101,'amysmith@gmail.com','abcd','student',1),(102,'bjohnson@yahoo.com','password123','student',0),(103,'carlawill@gmail.com','password123','student',0),(104,'davidlee@hotmail.com','password123','student',0),(105,'echen@yahoo.com','password123','student',0),(106,'frankrod@gmail.com','password123','student',0),(107,'gracekim@hotmail.com','password123','student',0),(108,'hnguyen@gmail.com','password123','student',0),(109,'isataylor@yahoo.com','password123','student',0),(110,'jbrown@hotmail.com','password123','student',0),(111,'katlee@gmail.com','password123','student',0),(112,'ljohnson@yahoo.com','password123','student',0),(113,'miadavis@gmail.com','password123','student',0),(114,'nkim@hotmail.com','password123','student',0),(115,'ogarcia@yahoo.com','password123','student',0),(116,'phernandez@gmail.com','password123','student',0),(117,'qsmith@hotmail.com','password123','student',0),(118,'rnguyen@yahoo.com','password123','student',0),(119,'swilson@gmail.com','password123','student',0),(120,'tbrown@yahoo.com','password123','student',0),(1019,'lilabrown@northeastern.edu','password123','student',0),(1020,'ethanturner@northeastern.edu','password123','student',0),(1021,'averyscott@northeastern.edu','password123','student',0),(1022,'miapeterson@northeastern.edu','password123','student',0),(1023,'aidenevans@northeastern.edu','password123','student',0),(1024,'gracemartinez@northeastern.edu','password123','student',0),(1025,'lucasrodriguez@northeastern.edu','password123','student',0),(1026,'hannahflores@northeastern.edu','password123','student',0),(1027,'isachernandez@northeastern.edu','password123','student',0),(1028,'oliviadavis@northeastern.edu','password123','student',0),(1029,'davidlewis@northeastern.edu','password123','student',0),(1030,'sofiaking@northeastern.edu','password123','student',0),(1031,'jacksonbaker@northeastern.edu','password123','student',0),(1032,'chloenelson@northeastern.edu','password123','student',0),(1033,'elijahcarter@northeastern.edu','password123','student',0),(1034,'avaperez@northeastern.edu','password123','student',0),(1035,'loganturner@northeastern.edu','password123','student',0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'university_gp'
---
-
---
 -- Dumping routines for database 'university_gp'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `get_advisor` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_advisor`(IN p_user_Id INT)
+BEGIN
+    SELECT * FROM advisor join department on advisor.department_id = department.department_id WHERE staff_id = p_user_Id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_advisor_students` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_advisor_students`(IN p_user_Id INT)
+BEGIN
+    SELECT * FROM student join course on student.course_id = course.course_id join advisor on student.advisor_id = advisor.staff_id join department on advisor.department_id = department.department_id WHERE staff_id =p_user_Id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_professor` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_professor`(IN p_user_Id INT)
+BEGIN
+    SELECT * FROM professor join department on professor.department_id = department.department_id WHERE staff_id = p_user_Id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_slots` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_slots`(IN p_user_id INT)
+BEGIN
+    select * from slots join advisor on slots.advisor_id = advisor.staff_id join student on student.advisor_id = advisor.staff_id Where student_id = p_user_id and slot_status = 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_slot_details` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_slot_details`(IN p_user_id INT)
+BEGIN
+    select student.student_id,student_name,student_major,student_email_id,class_level,grade, start_time,end_time,app_status from appointments join student on student.student_id = appointments.student_id join advisor on advisor.staff_id = appointments.advisor_id join slots on slots.slot_id = appointments.slot_id where staff_id = p_user_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_student` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_student`(IN p_user_id INT)
+BEGIN
+    SELECT * FROM student join advisor on advisor.staff_id = student.advisor_id WHERE student_id = p_user_Id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `password_update` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -611,6 +702,66 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `password_update`(IN pass_user_name VARCHAR(50))
 BEGIN
     SELECT pass_updated FROM user WHERE username = pass_user_name;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `update_advisor` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_advisor`(
+    IN p_name VARCHAR(255),
+    IN p_dob DATE,
+    IN p_phone VARCHAR(15),
+    IN p_email VARCHAR(255),
+    IN p_user_id INT
+)
+BEGIN
+    UPDATE advisor
+    SET 
+        `staff_name` = p_name,
+        `date_of_birth` = p_dob,
+        `phone_number` = p_phone,
+        `staff_email_id` = p_email
+    WHERE `staff_id` = p_user_id;
+            
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `update_appointment` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_appointment`(
+    IN student_email VARCHAR(255),
+    IN advisor_name VARCHAR(255),
+    IN p_slot_id INT,
+    IN user_id INT
+)
+BEGIN
+    DECLARE advisor_id INT;
+	SELECT staff_id INTO advisor_id FROM advisor WHERE staff_name = advisor_name;
+    INSERT INTO appointments (student_id, advisor_id, slot_id)
+    VALUES (user_id, advisor_id, p_slot_id);
+    UPDATE slots SET slot_status = 2 WHERE slot_id = p_slot_id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -636,6 +787,70 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `update_professor` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_professor`(
+    IN p_name VARCHAR(255),
+    IN p_dob DATE,
+    IN p_tenure VARCHAR(50),
+    IN p_phone VARCHAR(15),
+    IN p_email VARCHAR(255),
+    IN p_user_id INT
+)
+BEGIN
+    UPDATE professor
+    SET 
+        `staff_name` = p_name,
+        `date_of_birth` = p_dob,
+        `tenure_status` = p_tenure,
+        `phone_number` = p_phone,
+        `staff_email_id` = p_email
+    WHERE `staff_id` = p_user_id;
+            
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `update_student` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_student`(
+    IN p_name VARCHAR(255),
+    IN p_dob DATE,
+    IN p_email VARCHAR(255),
+    IN p_user_id INT
+)
+BEGIN
+    UPDATE student
+    SET 
+        `student_name` = p_name,
+        `date_of_birth` = p_dob,
+        `student_email_id` = p_email
+    WHERE `student_id` = p_user_id;
+            
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -646,4 +861,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-05 22:56:18
+-- Dump completed on 2023-04-11 12:17:41

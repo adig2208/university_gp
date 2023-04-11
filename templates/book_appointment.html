@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">My Profile</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ url_for('student') }}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('book_appointment') }}">Book Appointment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Clubs</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+        </ul>
+      </div>
+      </nav>
+  
+    <div class="container">
+      <h1>Schedule Appointment</h1>
+      <form method="POST" action ="/update_appointment">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" name="email" value="{{session['username']}}">
+        </div>
+        <div class="form-group">
+          <label for="ad_name">Advisor: </label>
+          <select class="form-control" id="ad_name" name="ad_name" required>
+            {% for s in slot %}
+              <option>{{ s['staff_name'] }} </option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="time">Slots For Today: </label>
+          <select class="form-control" id="time" name="time" required>
+            <option value="" selected disabled>Select a slot</option>
+            {% for s in slot %}
+              {% if s['start_time'] == selected_time %}
+                <option value="{{ s['slot_id'] }}" selected>{{ s['start_time'] }} - {{ s['end_time'] }}</option>
+              {% else %}
+                <option value="{{ s['slot_id'] }}">{{ s['start_time'] }} - {{ s['end_time'] }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Book Appointment</button>
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

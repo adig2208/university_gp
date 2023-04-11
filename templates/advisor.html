@@ -1,9 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Advisor Page</title>
+	<title>Advisor Profile</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>Welcome, advisor</h1>
-</body>
-</html>
+
+	
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">My Profile</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+		  <ul class="navbar-nav">
+			<li class="nav-item active">
+			  <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="{{ url_for('advisor_students') }}">Students</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="{{ url_for('view_appointment') }}">Appointments</a>
+			</li>
+		  </ul>
+		  <ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+			  <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+			</li>
+		  </ul>
+		</div>
+	  </nav>
+
+	<div class="container mt-5" style="margin-top:1rem!important">
+		<h2>My Profile</h2>
+		<form action="{{ url_for('update_advisor') }}" method="POST">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" class="form-control" id="name" name="name" value="{{ adv['staff_name'] }}">
+			</div>
+			<div class="form-group">
+				<label for="dob">Date of Birth:</label>
+				<input type="date" class="form-control" id="dob" name="dob" value="{{ adv['date_of_birth'] }}">
+			</div>
+			<div class="form-group">
+				<label for="phone">Phone Number:</label>
+				<input type="tel" class="form-control" id="phone" name="phone" value="{{ adv['phone_number'] }}">
+			</div>
+			<div class="form-group">
+				<label for="email">Email ID:</label>
+				<input type="email" class="form-control" id="email" name="email" value="{{ adv['staff_email_id'] }}">
+			</div>
+			<div class="form-group">
+				<label for="role">Role:</label>
+				<input disabled type="text" class="form-control" id="role" name="role" value="{{ adv['role'] }}">
+			</div>
+			<div class="form-group">
+				<label for="department">Department:</label>
+				<input disabled type="text" class="form-control" id="department" name="department" value="{{ adv['department_name'] }}">
+			</div>
+			<div class="form-group">
+				<label for="reports_to">Reports To:</label>
+				<input disabled type="text" class="form-control" id="reports_to" name="reports_to" value="{{ adv['department_head'] }}">
+				</div>
+				<button type="submit" class="btn btn-primary">Update Profile</button>
+				</form>
+				</div>
+				
+				</body>
+				</html>
