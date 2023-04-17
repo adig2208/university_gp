@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Club</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>  
+    <style>
+        .card-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">My Profile</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+		  <ul class="navbar-nav">
+			<li class="nav-item active">
+			  <a class="nav-link" href="{{ url_for('student') }}">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="{{ url_for('course') }}">Courses</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ url_for('book_appointment') }}">Book Appointment</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="{{ url_for('my_booking') }}">My Appointments</a>
+			  </li>
+			{% if session['user_role'] == 'student' %}
+			<li class="nav-item">
+				<a class="nav-link" href="{{ url_for('club') }}">Clubs</a>
+			  </li>
+              <li class="nav-item">
+				<a class="nav-link" href="{{ url_for('my_club') }}">Memberships</a>
+			  </li>
+			{% endif %}
+			{% if session['user_role'] == 'club_head' %}
+			<li class="nav-item">
+				<a class="nav-link" href="{{ url_for('club_home') }}">Club Home</a>
+			  </li>
+			{% endif %}
+		  </ul>
+		  <ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+			  <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+			</li>
+		  </ul>
+		</div>
+	  </nav>
+      <section>
+  <div class="container">
+      <div class="card" style="margin-top: 50px">
+        <div class="card-body">
+          <form action="{{ url_for('club_events') }}", method="POST">
+            <div class="card-header">
+                <label for="name">Club Name</label>
+              <input type="text" class="form-control" id="name" name="name" value="{{ my_club['club_name'] }}">
+              </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" class="form-control" id="description" name="description" value="{{ my_club['club_description'] }}">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" class="form-control" id="email" name="email" value="{{ my_club['club_email_address'] }}">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="text" class="form-control" id="phone" name="phone" value="{{ my_club['club_phone_number'] }}">
+            </div>
+            <div class="form-group">
+              <label for="head">Club Head</label>
+              <input type="text" class="form-control" id="head" name="head" value="{{ my_club['student_name'] }}">
+            </div>
+            <button type="submit" class="btn btn-primary">View Events</button>
+          </form>
+          <br>
+          <form method="post" action="{{ url_for('delete_club') }}">
+            <button type="submit" class="btn btn-primary">Leave Club</button>
+        </form>
+            </div>
+    </div>
+    </div>
+    </body>
+    </html>

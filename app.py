@@ -1,4 +1,4 @@
-
+ 
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
@@ -132,6 +132,24 @@ def update_student():
         mysql.connection.commit()
         # redirect the user back to their profile page
         return redirect(url_for('student'))
+
+
+@app.route("/my_booking")
+def my_booking():
+    cursor = mysql.connection.cursor()
+    cursor.callproc('get_booking',(session['user_id'],))
+    rows = cursor.fetchall()
+    cursor.close()
+    book = []
+    for row in rows:
+        book.append({
+            'appointment_id': row[0],
+            'start_time': row[1],
+            'end_time': row[2],
+            'staff_name': row[3],
+            'staff_email_id': row[4],
+        })
+    return render_template("my_booking.html", book = book)
     
 @app.route('/logout')
 def logout():
@@ -147,6 +165,7 @@ def student():
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.callproc('get_student', (session['user_id'],))
         stu = cursor.fetchone()   
+        print(session['user_role'])
         return render_template("student.html", stu = stu)
     return redirect(url_for('login'))
 
@@ -172,6 +191,39 @@ def advisor():
         return render_template("advisor.html", adv = adv)
     return redirect(url_for('login'))
 
+# Define professor page route
+@app.route("/club")
+def club():
+    if 'loggedin' in session:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.callproc('get_clubs')
+        club = cursor.fetchall()    
+        return render_template("club.html", club = club)
+    return redirect(url_for('login'))
+
+@app.route('/delete_club', methods=['POST'])
+def delete_club():
+    if request.method == 'POST':
+        cursor = mysql.connection.cursor()
+        user = session['user_id']
+        cursor.callproc('delete_club', (session['user_id'],))
+        mysql.connection.commit()
+        # redirect the user back to their profile page
+        return redirect(url_for('club'))
+
+@app.route('/update_club', methods=['POST'])
+def update_club():
+    if request.method == 'POST':
+        name = request.form['name']
+        print(name)
+        cursor = mysql.connection.cursor()
+        user = session['user_id']
+        cursor.callproc('fill_participants', (int(user),name))
+        mysql.connection.commit()
+        # redirect the user back to their profile page
+        return redirect(url_for('club'))
+    
+
 #Students assigned to advisor page route 
 @app.route("/advisor_students")
 def advisor_students():
@@ -182,6 +234,78 @@ def advisor_students():
         return render_template("advisor_students.html", adv_stu = adv_stu)
     return redirect(url_for('login'))
 
+@app.route("/my_club")
+def my_club():
+    if 'loggedin' in session:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.callproc('my_clubs', (session['user_id'],))
+        my_club = cursor.fetchone()
+        return render_template("my_club.html", my_club = my_club)
+    return redirect(url_for('login'))
+
+@app.route("/club_home")
+def club_home():
+    if 'loggedin' in session:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.callproc('my_clubs',(session['user_id'],))
+        my_club = cursor.fetchone()
+        cursor.nextset()  # Advance to next result set
+        cursor2 = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor2.callproc('get_building')
+        build = cursor2.fetchall()
+        cursor.close()
+        cursor2.close()
+        return render_template("club_home.html", my_club=my_club, build=build)
+    return redirect(url_for('login'))
+
+@app.route('/get_rooms', methods=['POST'])
+def get_rooms():
+    building_id = request.form['building_id']
+    print(building_id)
+    conn = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    conn.callproc('get_rooms',(building_id,))
+    rooms = conn.fetchall()
+    room_numbers = [room['room_number'] for room in rooms]
+    return {'room_numbers': room_numbers}
+
+@app.route('/create_events', methods=['POST'])
+def create_events():
+    if request.method == 'POST':
+        name = request.form['name']
+        event_name = request.form['event_name']
+        event_description = request.form['event_description']
+        event_date = request.form['event_date']
+        start_time = request.form['start_time']
+        end_time = request.form['end_time']
+        building_name = request.form['building']
+        room_number = request.form['room_number']
+        cursor = mysql.connection.cursor()
+        cursor.callproc('create_event', (name,event_name,event_description,event_date,start_time,end_time,building_name,room_number))
+        mysql.connection.commit()
+        return redirect(url_for('club_home'))
+
+@app.route('/club_events', methods=['GET','POST'])
+def club_events():
+    if request.method == 'POST':
+        name = request.form['name']
+        cursor = mysql.connection.cursor()
+        cursor.callproc('club_events',(name,))
+        rows = cursor.fetchall()
+        cursor.close()
+        get_events = []
+        for row in rows:
+            get_events.append({
+                'event_name': row[0],
+                'event_description': row[1],
+                'event_date': row[2],
+                'start_time': row[3],
+                'end_time': row[4],
+                'room_number': row[5],
+                'room_capacity': row[6],
+                'building_name': row[7],
+            })
+        print(get_events)
+        return render_template("club_events.html", get_events = get_events)
 
 @app.route("/book_appointment")
 def book_appointment():
@@ -211,6 +335,7 @@ def view_appointment():
         cursor.close()
         get_slot = []
         for row in rows:
+            print(row)
             get_slot.append({
                 'student_id': row[0],
                 'student_name': row[1],
@@ -221,12 +346,45 @@ def view_appointment():
                 'start_time': row[6],
                 'end_time': row[7],
             })
-            return render_template("view_appointment.html", get_slot = get_slot)
+        print(get_slot)
+        return render_template("view_appointment.html", get_slot = get_slot)
 
-# Define club head page route
-@app.route("/club_head")
-def club_head():
-    return "Welcome, club head"
+@app.route('/course')
+def course():
+        cursor = mysql.connection.cursor()
+        cursor.callproc('get_course_details',(session['user_id'],))
+        rows = cursor.fetchall()
+        cursor.close()
+        get_details = []
+        for row in rows:
+            get_details.append({
+                'student_major': row[0],
+                'course_name': row[1],
+                'section_number': row[2],
+                'course_description': row[3],
+                'course_credits': row[4],
+                'building_name': row[5],
+                'staff_name': row[6],
+                'room_number': row[7],
+            })
+        cursor2 = mysql.connection.cursor()
+        cursor2.callproc('get_all_courses')
+        rows2 = cursor2.fetchall()
+        cursor2.close()
+        get_det = []
+        for row in rows2:
+            get_det.append({
+                'course_name': row[0],
+                'section_number': row[1],
+                'course_description': row[2],
+                'course_credits': row[3],
+                'building_name': row[4],
+                'staff_name': row[5],
+                'room_number': row[6],
+            })
+        return render_template("course.html", get_details = get_details,get_det =get_det)
+
+
 
 
 if __name__ == "__main__":

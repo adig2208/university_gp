@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Advisor Appointments</title>
+	<title>Courses</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -19,14 +19,30 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 		  <ul class="navbar-nav">
 			<li class="nav-item active">
-			  <a class="nav-link" href="{{ url_for('advisor') }}">Home <span class="sr-only">(current)</span></a>
+			  <a class="nav-link" href="{{ url_for('student') }}">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="{{ url_for('advisor_students') }}">Students</a>
+			  <a class="nav-link" href="{{ url_for('course') }}">Courses</a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="{{ url_for('view_appointment') }}">Appointments</a>
-			</li>
+				<a class="nav-link" href="{{ url_for('book_appointment') }}">Book Appointment</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="{{ url_for('my_booking') }}">My Appointments</a>
+			  </li>
+			{% if session['user_role'] == 'student' %}
+			<li class="nav-item">
+				<a class="nav-link" href="{{ url_for('club') }}">Clubs</a>
+			  </li>
+              <li class="nav-item">
+				<a class="nav-link" href="{{ url_for('my_club') }}">Memberships</a>
+			  </li>
+			{% endif %}
+			{% if session['user_role'] == 'club_head' %}
+			<li class="nav-item">
+				<a class="nav-link" href="#">Club Home</a>
+			  </li>
+			{% endif %}
 		  </ul>
 		  <ul class="navbar-nav ml-auto">
 			<li class="nav-item">
@@ -37,31 +53,29 @@
 	  </nav>
 
       <div class="container">
-		<h2>My Appointments</h2>
+		<h2>Club Events</h2>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>Student ID</th>
-					<th>Student Name</th>
-					<th>Student Major</th>
-                    <th>Email ID</th>
-                    <th>Class Level</th>
-                    <th>Student Grade</th>
-                    <th>Time Slot</th>
-                    <th>Status</th>
+					<th>Event Name</th>
+					<th>Event Description</th>
+                    <th>Event Date</th>
+					<th>Time</th>
+                    <th>Room Number</th>
+                    <th>Capacity</th>
+                    <th>Building</th>
 				</tr>
 			</thead>
 			<tbody>
-				{%for row in get_slot%}
+				{%for row in get_events%}
 				<tr>
-					<td>{{ row['student_id'] }}</td>
-					<td>{{ row['student_name'] }}</td>
-					<td>{{ row['student_major'] }}</td>
-                    <td>{{ row['student_email_id'] }}</td>
-					<td>{{ row['class_level'] }}</td>
-					<td>{{ row['grade'] }}</td>
+					<td>{{ row['event_name'] }}</td>
+					<td>{{ row['event_description'] }}</td>
+					<td>{{ row['event_date'] }}</td>
                     <td>{{ row['start_time'] }} - {{ row['end_time'] }}</td>
-					<td>Confirmed</td>
+					<td>{{ row['room_number'] }}</td>
+                    <td>{{ row['room_capacity'] }} </td>
+					<td>{{ row['building_name'] }} </td>
 				</tr>
 				{% endfor %}
 			</tbody>

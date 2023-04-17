@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Student Profile</title>
+	<title>Appointments</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -9,7 +10,6 @@
 </head>
 <body>
 
-	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">My Profile</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,40 +52,31 @@
 		</div>
 	  </nav>
 
-	<div class="container mt-5" style="margin-top:1rem!important">
-		<h2>My Profile</h2>
-		<form action="{{ url_for('update_student') }}" method="POST">
-			<div class="form-group">
-				<label for="name">Name:</label>
-				<input type="text" class="form-control" id="name" name="name" value="{{ stu['student_name'] }}">
-			</div>
-			<div class="form-group">
-				<label for="dob">Date of Birth:</label>
-				<input type="date" class="form-control" id="dob" name="dob" value="{{ stu['date_of_birth'] }}">
-			</div>
-			<div class="form-group">
-				<label for="email">Email:</label>
-				<input type="email" class="form-control" id="email" name="email" value="{{ stu['student_email_id'] }}">
-			</div>
-			<div class="form-group">
-				<label for="major">Major:</label>
-				<input disabled type="text" class="form-control" id="major" name="major" value="{{ stu['student_major'] }}">
-			</div>
-			<div class="form-group">
-				<label for="class_level">Class Level:</label>
-				<input disabled type="text" class="form-control" id="class_level" name="class_level" value="{{ stu['class_level'] }}">
-			</div>
-			<div class="form-group">
-				<label for="grade">Grade:</label>
-				<input disabled type="text" class="form-control" id="grade" name="grade" value="{{ stu['grade'] }}">
-			</div>
-			<div class="form-group">
-				<label for="adv_assign">Advisor Assigned:</label>
-				<input disabled type="text" class="form-control" id="adv_assign" name="adv_assign" value="{{ stu['staff_name'] }}">
-				</div>
-				<button type="submit" class="btn btn-primary">Update Profile</button>
-				</form>
-				</div>
-				
-				</body>
-				</html>
+      <div class="container">
+		<h2>My Appointments</h2>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Appointment ID</th>
+					<th>Time Slot</th>
+					<th>Advisor</th>
+                    <th>Advisor Email ID</th>
+                    <th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				{%for row in book%}
+				<tr>
+					<td>{{ row['appointment_id'] }}</td>
+                    <td>{{ row['start_time'] }} - {{ row['end_time'] }}</td>
+					<td>{{ row['staff_name'] }}</td>
+                    <td>{{ row['staff_email_id'] }}</td>
+					<td>Confirmed</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
+
