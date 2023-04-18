@@ -21,11 +21,21 @@
 			  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="#">About</a>
-			</li>
+				<a class="nav-link" href="{{ url_for('professor_courses') }}">Courses</a>
+			  </li>
+			{% if session['user_role'] == "dept_head" %}
 			<li class="nav-item">
-			  <a class="nav-link" href="#">Contact</a>
+			  <a class="nav-link" href="{{ url_for('view_professors') }}">View Professors</a>
 			</li>
+			{% endif %}
+			{% if session['user_role'] == "dept_head" %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('add_courses') }}">Add Courses</a>
+              </li>
+              {% endif %}
+			  <li class="nav-item">
+				<a class="nav-link" href="{{ url_for('course_statistics') }}">Course Statistics</a>
+			  </li>
 		  </ul>
 		  <ul class="navbar-nav ml-auto">
 			<li class="nav-item">

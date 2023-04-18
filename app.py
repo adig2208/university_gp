@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+import json
  
 app = Flask(__name__)
 app.secret_key = "secret-key"
@@ -10,7 +11,7 @@ app.secret_key = "secret-key"
 # Configure database connection
 app.config["MYSQL_HOST"] = "localhost"
 app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = "1234"
+app.config["MYSQL_PASSWORD"] = "Vader@07"
 app.config["MYSQL_DB"] = "university_gp"
 
 # Initialize database connection
@@ -46,7 +47,7 @@ def login():
             # Map role to appropriate page
                 if user[3] == "student":
                     return redirect("/student")
-                elif user[3] == "professor":
+                elif user[3] == "professor" or "dept_head":
                     return redirect("/professor")
                 elif user[3] == "advisor":
                     return redirect("/advisor")
@@ -187,7 +188,8 @@ def advisor():
     if 'loggedin' in session:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.callproc('get_advisor', (session['user_id'],))
-        adv = cursor.fetchone()   
+        adv = cursor.fetchone() 
+        print(adv)  
         return render_template("advisor.html", adv = adv)
     return redirect(url_for('login'))
 
@@ -386,6 +388,72 @@ def course():
 
 
 
+@app.route("/professor_courses")
+def professor_courses():
+    if 'loggedin' in session:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.callproc('view_courses', (session['username'],))
+        prof_course = cursor.fetchall()
+        return render_template('professor_courses.html',prof_course=prof_course)
+    return redirect(url_for('login'))
 
+@app.route("/enrolled_students",methods=['GET','POST'])
+def enrolled_students():
+    if 'loggedin' in session:
+        if request.method=='POST':
+            cursor = mysql.connection.cursor()
+            cursor.callproc("update_grade",(request.form['grade'],request.form['student_id']))
+            mysql.connection.commit()
+        course_id = int(request.args.get('course_id'))
+        section_id = int(request.args.get('section_id'))
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.callproc('view_students', (course_id,section_id))
+        view_students = cursor.fetchall()
+        return render_template('enrolled_students.html',data=view_students)
+    return redirect(url_for('login'))
+
+@app.route('/view_professors')
+def view_professors():
+    if 'loggedin' in session:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.callproc('view_professors', (session['username'],))
+        view_professors = cursor.fetchall()
+        return render_template('view_professors.html',data=view_professors)
+    return redirect(url_for('login'))
+
+@app.route('/add_courses',methods=['GET','POST'])
+def add_courses():
+    if 'loggedin' in session:
+        if request.method=='POST':
+            cursor = mysql.connection.cursor()
+            cursor.callproc("add_courses",(session['username'],request.form['name'],request.form['description'],request.form['credits']))
+            mysql.connection.commit()
+        return render_template('add_courses.html')
+    return redirect(url_for('login'))
+
+@app.route('/course_statistics')
+def course_statistics():
+    if 'loggedin' in session:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.callproc('view_courses', (session['username'],))
+        prof_course = cursor.fetchall()
+        return render_template('course_statistics.html',prof_course=prof_course)
+    return redirect(url_for('login'))
+
+@app.route('/statistics')
+def statistics():
+    if 'loggedin' in session:
+        course_id = int(request.args.get('course_id'))
+        section_id = int(request.args.get('section_id'))
+        course_name = request.args.get('course_name')
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.callproc('get_grade_statistics', (course_id,section_id))
+        statistics = cursor.fetchall()
+        output = []
+        for d in statistics:
+            rounded_value = round(d['y'])
+            output.append({'label':d['label'],'y': rounded_value})
+        return render_template('statistics.html',data=output,course_name=course_name)
+    return redirect(url_for('login'))
 if __name__ == "__main__":
     app.run(debug=True)
