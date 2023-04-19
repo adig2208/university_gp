@@ -58,6 +58,7 @@
 			<thead>
 				<tr>
 					<th>Appointment ID</th>
+					<th>Slot Date</th>
 					<th>Time Slot</th>
 					<th>Advisor</th>
                     <th>Advisor Email ID</th>
@@ -68,6 +69,7 @@
 				{%for row in book%}
 				<tr>
 					<td>{{ row['appointment_id'] }}</td>
+					<td>{{ row['slot_date'] }}</td>
                     <td>{{ row['start_time'] }} - {{ row['end_time'] }}</td>
 					<td>{{ row['staff_name'] }}</td>
                     <td>{{ row['staff_email_id'] }}</td>

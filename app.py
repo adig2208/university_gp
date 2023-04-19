@@ -11,7 +11,7 @@ app.secret_key = "secret-key"
 # Configure database connection
 app.config["MYSQL_HOST"] = "localhost"
 app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = "Vader@07"
+app.config["MYSQL_PASSWORD"] = "1234"
 app.config["MYSQL_DB"] = "university_gp"
 
 # Initialize database connection
@@ -43,16 +43,19 @@ def login():
             session["username"] = user[1]
             session["user_id"] = user[0]
             session["user_role"] = user[3]
+            print(session["user_role"])
             if password_updated(session["username"]):
             # Map role to appropriate page
                 if user[3] == "student":
                     return redirect("/student")
-                elif user[3] == "professor" or "dept_head":
-                    return redirect("/professor")
                 elif user[3] == "advisor":
                     return redirect("/advisor")
                 elif user[3] == "club_head":
                     return redirect("/student")
+                elif user[3] == "professor":
+                    return redirect("/professor")
+                elif user[3] == "dept_head":
+                    return redirect("/professor")
             else:
                 return redirect('/update-password')
         else:
@@ -145,10 +148,11 @@ def my_booking():
     for row in rows:
         book.append({
             'appointment_id': row[0],
-            'start_time': row[1],
-            'end_time': row[2],
-            'staff_name': row[3],
-            'staff_email_id': row[4],
+            'slot_date':row[1],
+            'start_time': row[2],
+            'end_time': row[3],
+            'staff_name': row[4],
+            'staff_email_id': row[5],
         })
     return render_template("my_booking.html", book = book)
     
@@ -318,6 +322,7 @@ def book_appointment():
         return render_template("book_appointment.html", slot = slot)
     return redirect(url_for('login'))
 
+
 @app.route('/update_appointment', methods=['POST'])
 def update_appointment():
     if request.method == 'POST':
@@ -350,6 +355,16 @@ def view_appointment():
             })
         print(get_slot)
         return render_template("view_appointment.html", get_slot = get_slot)
+
+@app.route('/add_slot',methods=['GET','POST'])
+def add_slot():
+    if 'loggedin' in session:
+        if request.method=='POST':
+            cursor = mysql.connection.cursor()
+            cursor.callproc("add_slot",(session['user_id'],request.form['slot_date'],request.form['slot_start_time'],request.form['slot_end_time']))
+            mysql.connection.commit()
+        return render_template('add_slot.html')
+    return redirect(url_for('login'))
 
 @app.route('/course')
 def course():

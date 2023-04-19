@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Advisor Appointments</title>
+	<title>Professor Profile</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -11,7 +10,7 @@
 <body>
 
 	
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">My Profile</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		  <span class="navbar-toggler-icon"></span>
@@ -38,37 +37,24 @@
 		  </ul>
 		</div>
 	  </nav>
-
-      <div class="container">
-		<h2>My Appointments</h2>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Student ID</th>
-					<th>Student Name</th>
-					<th>Student Major</th>
-                    <th>Email ID</th>
-                    <th>Class Level</th>
-                    <th>Student Grade</th>
-                    <th>Time Slot</th>
-                    <th>Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				{%for row in get_slot%}
-				<tr>
-					<td>{{ row['student_id'] }}</td>
-					<td>{{ row['student_name'] }}</td>
-					<td>{{ row['student_major'] }}</td>
-                    <td>{{ row['student_email_id'] }}</td>
-					<td>{{ row['class_level'] }}</td>
-					<td>{{ row['grade'] }}</td>
-                    <td>{{ row['start_time'] }} - {{ row['end_time'] }}</td>
-					<td>Confirmed</td>
-				</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</div>
+      <div class="container mt-5" style="margin-top:1rem!important">
+        <form action="{{ url_for('add_slot') }}" method="POST">
+            <h2>Add Slot</h2>
+            <div class="form-group">
+				<label for="slot_date">Slot Date:</label>
+				<input type="date" class="form-control" id="slot_date" name="slot_date">
+			</div>
+            <div class="form-group">
+				<label for="slot_start_time">Start Time:</label>
+				<input type="time" class="form-control" id="slot_start_time" name="slot_start_time">
+			</div>
+            <div class="form-group">
+				<label for="slot_end_time">End Time:</label>
+				<input type="time" class="form-control" id="slot_end_time" name="slot_end_time">
+			</div>
+            <button type="submit" class="btn btn-primary">Add Slot</button>
+      </form>
+      </div>
+      
 </body>
 </html>
