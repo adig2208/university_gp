@@ -85,6 +85,11 @@
       </div>
     {% endfor %}
     </div>
-
+    <script>
+      {% if error_message %}
+          alert('{{ error_message }}');
+          window.location.href = '/club';
+      {% endif %}
+      </script>
     </body>
     </html>

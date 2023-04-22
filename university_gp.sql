@@ -95,7 +95,7 @@ CREATE TABLE `appointments` (
 
 LOCK TABLES `appointments` WRITE;
 /*!40000 ALTER TABLE `appointments` DISABLE KEYS */;
-INSERT INTO `appointments` VALUES (1,101,1,2,1),(2,103,1,11,1);
+INSERT INTO `appointments` VALUES (1,101,1,2,1);
 /*!40000 ALTER TABLE `appointments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +191,7 @@ DROP TABLE IF EXISTS `course`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `course` (
-  `course_id` int NOT NULL,
+  `course_id` int NOT NULL AUTO_INCREMENT,
   `course_name` varchar(255) DEFAULT NULL,
   `course_description` varchar(255) DEFAULT NULL,
   `course_credits` int DEFAULT NULL,
@@ -199,7 +199,7 @@ CREATE TABLE `course` (
   PRIMARY KEY (`course_id`),
   KEY `department_id` (`department_id`),
   CONSTRAINT `course_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +208,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'Introduction to Computer Science','Introduction to the fundamentals of computer science.',4,1),(2,'Data Structures and Algorithms','Study of basic algorithms and their implementation.',4,1),(3,'Discrete Mathematics','Introduction to mathematical reasoning and discrete structures.',4,1),(4,'Introduction to Biology','Overview of the major concepts and principles of biology.',4,2),(5,'Cellular and Molecular Biology','Study of cellular and molecular mechanisms of life.',4,2),(6,'Genetics and Evolution','Introduction to the principles of genetics and evolution.',4,2),(7,'General Chemistry','Introduction to the fundamental principles of chemistry.',4,3),(8,'Organic Chemistry','Introduction to the principles of organic chemistry.',4,3),(9,'Physical Chemistry','Introduction to the principles of physical chemistry.',4,3),(10,'Linear Algebra','Study of linear equations and matrices.',4,4),(11,'Real Analysis','Introduction to the fundamental concepts of analysis.',4,4),(12,'Probability and Statistics','Introduction to the concepts of probability and statistics.',4,4),(13,'Classical Mechanics','Introduction to the principles of classical mechanics.',4,5),(14,'Electromagnetism','Introduction to the principles of electromagnetism.',4,5),(15,'Quantum Mechanics','Introduction to the principles of quantum mechanics.',4,5),(16,'Introduction to Psychology','Overview of the major concepts and principles of psychology.',4,6),(17,'Social Psychology','Introduction to the principles of social psychology.',4,6),(18,'Abnormal Psychology','Introduction to the principles of abnormal psychology.',4,6),(19,'Introduction to English Literature','Overview of the major works of English literature.',4,7),(20,'American Literature','Introduction to the major works of American literature.',4,7),(21,'Creative Writing','Introduction to the principles of creative writing.',4,7),(22,'Introduction to World History','Overview of the major events and themes of world history.',4,8),(23,'American History','Introduction to the major events and themes of American history.',4,8),(24,'History of Science and Technology','Overview of the major scientific and technological developments of history.',4,8),(25,'Introduction to Political Science','Overview of the major concepts and principles of political science.',4,9),(26,'International Relations','Introduction to the principles of international relations.',4,9),(27,'Comparative Politics','Introduction to the principles of comparative politics.',4,9),(28,'Introduction to Business','Introduction to the major concepts and principles of business.',4,10),(29,'Marketing','Introduction to the principles of marketing.',4,10),(30,'Financial Accounting','Introduction to the principles of financial accounting.',4,10);
+INSERT INTO `course` VALUES (1,'Introduction to Computer Science','Introduction to the fundamentals of computer science.',4,1),(2,'Data Structures and Algorithms','Study of basic algorithms and their implementation.',4,1),(3,'Discrete Mathematics','Introduction to mathematical reasoning and discrete structures.',4,1),(4,'Introduction to Biology','Overview of the major concepts and principles of biology.',4,2),(5,'Cellular and Molecular Biology','Study of cellular and molecular mechanisms of life.',4,2),(6,'Genetics and Evolution','Introduction to the principles of genetics and evolution.',4,2),(7,'General Chemistry','Introduction to the fundamental principles of chemistry.',4,3),(8,'Organic Chemistry','Introduction to the principles of organic chemistry.',4,3),(9,'Physical Chemistry','Introduction to the principles of physical chemistry.',4,3),(10,'Linear Algebra','Study of linear equations and matrices.',4,4),(11,'Real Analysis','Introduction to the fundamental concepts of analysis.',4,4),(12,'Probability and Statistics','Introduction to the concepts of probability and statistics.',4,4),(13,'Classical Mechanics','Introduction to the principles of classical mechanics.',4,5),(14,'Electromagnetism','Introduction to the principles of electromagnetism.',4,5),(15,'Quantum Mechanics','Introduction to the principles of quantum mechanics.',4,5),(16,'Introduction to Psychology','Overview of the major concepts and principles of psychology.',4,6),(17,'Social Psychology','Introduction to the principles of social psychology.',4,6),(18,'Abnormal Psychology','Introduction to the principles of abnormal psychology.',4,6),(19,'Introduction to English Literature','Overview of the major works of English literature.',4,7),(20,'American Literature','Introduction to the major works of American literature.',4,7),(21,'Creative Writing','Introduction to the principles of creative writing.',4,7),(22,'Introduction to World History','Overview of the major events and themes of world history.',4,8),(23,'American History','Introduction to the major events and themes of American history.',4,8),(24,'History of Science and Technology','Overview of the major scientific and technological developments of history.',4,8),(25,'Introduction to Political Science','Overview of the major concepts and principles of political science.',4,9),(26,'International Relations','Introduction to the principles of international relations.',4,9),(27,'Comparative Politics','Introduction to the principles of comparative politics.',4,9),(28,'Introduction to Business','Introduction to the major concepts and principles of business.',4,10),(29,'Marketing','Introduction to the principles of marketing.',4,10),(30,'Financial Accounting','Introduction to the principles of financial accounting.',4,10),(31,'abcdefg','abcdefgkffhsdvhsflsdjvl\'jfad',4,1),(32,'Cybersec','Intro to CY',4,1);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -298,7 +298,7 @@ CREATE TABLE `participates` (
 
 LOCK TABLES `participates` WRITE;
 /*!40000 ALTER TABLE `participates` DISABLE KEYS */;
-INSERT INTO `participates` VALUES (1,101),(4,1019),(1,1020),(3,1025),(2,1032),(5,1035);
+INSERT INTO `participates` VALUES (4,101),(4,1019),(1,1020),(3,1025),(2,1032),(5,1035);
 /*!40000 ALTER TABLE `participates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -400,7 +400,7 @@ CREATE TABLE `slots` (
   PRIMARY KEY (`slot_id`),
   KEY `advisor_id` (`advisor_id`),
   CONSTRAINT `slots_ibfk_1` FOREIGN KEY (`advisor_id`) REFERENCES `advisor` (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,7 +409,7 @@ CREATE TABLE `slots` (
 
 LOCK TABLES `slots` WRITE;
 /*!40000 ALTER TABLE `slots` DISABLE KEYS */;
-INSERT INTO `slots` VALUES (1,'2023-04-18','10:00:00','11:00:00',1,2),(2,'2023-04-18','11:30:00','12:30:00',2,1),(3,'2023-04-18','13:00:00','14:00:00',1,3),(4,'2023-04-18','14:30:00','15:30:00',1,5),(5,'2023-04-18','16:00:00','17:00:00',1,7),(6,'2023-04-18','10:00:00','11:00:00',1,9),(7,'2023-04-18','11:30:00','12:30:00',1,8),(8,'2023-04-18','13:00:00','14:00:00',1,10),(9,'2023-04-18','14:30:00','15:30:00',1,4),(10,'2023-04-18','16:00:00','17:00:00',1,6),(11,'2023-04-18','10:00:00','11:00:00',2,1),(12,'2023-04-18','11:30:00','12:30:00',1,3),(13,'2023-04-18','13:00:00','14:00:00',1,2),(14,'2023-04-18','14:30:00','15:30:00',1,4),(15,'2023-04-18','16:00:00','17:00:00',1,5),(16,'2023-04-18','14:00:00','15:00:00',1,1),(17,'2023-04-19','14:00:00','15:00:00',1,1),(18,'2023-04-20','18:00:00','19:00:00',1,1);
+INSERT INTO `slots` VALUES (1,'2023-04-18','10:00:00','11:00:00',1,2),(2,'2023-04-18','11:30:00','12:30:00',2,1),(3,'2023-04-18','13:00:00','14:00:00',1,3),(4,'2023-04-18','14:30:00','15:30:00',1,5),(5,'2023-04-18','16:00:00','17:00:00',1,7),(6,'2023-04-18','10:00:00','11:00:00',1,9),(7,'2023-04-18','11:30:00','12:30:00',1,8),(8,'2023-04-18','13:00:00','14:00:00',1,10),(9,'2023-04-18','14:30:00','15:30:00',1,4),(10,'2023-04-18','16:00:00','17:00:00',1,6),(11,'2023-04-18','10:00:00','11:00:00',2,1),(12,'2023-04-18','11:30:00','12:30:00',1,3),(13,'2023-04-18','13:00:00','14:00:00',1,2),(14,'2023-04-18','14:30:00','15:30:00',1,4),(15,'2023-04-18','16:00:00','17:00:00',1,5),(16,'2023-04-18','14:00:00','15:00:00',1,1),(17,'2023-04-19','14:00:00','15:00:00',1,1),(18,'2023-04-20','18:00:00','19:00:00',1,1),(19,'2023-04-21','10:00:00','11:00:00',1,1),(20,'2023-04-21','12:00:00','13:00:00',1,1),(21,'2023-04-21','15:00:00','16:00:00',1,1),(22,'2023-04-21','18:00:00','19:00:00',1,1),(23,'2023-04-21','20:00:00','21:00:00',1,1),(24,'2023-04-22','09:00:00','10:00:00',1,1),(25,'2023-04-22','10:00:00','11:00:00',1,1),(26,'2023-04-22','11:00:00','12:00:00',1,1),(27,'2023-04-22','12:00:00','13:00:00',1,1),(28,'2023-04-22','13:00:00','14:00:00',1,1),(29,'2023-04-22','14:00:00','15:00:00',1,1),(30,'2023-04-22','15:00:00','16:00:00',1,1),(31,'2023-04-22','16:00:00','17:00:00',1,1),(32,'2023-04-22','17:00:00','18:00:00',1,1),(33,'2023-04-23','09:00:00','10:00:00',1,1),(34,'2023-04-23','10:00:00','11:00:00',1,1),(35,'2023-04-23','11:00:00','12:00:00',1,1),(36,'2023-04-23','12:00:00','13:00:00',1,1),(37,'2023-04-23','13:00:00','14:00:00',1,1),(38,'2023-04-23','14:00:00','15:00:00',1,1),(39,'2023-04-23','15:00:00','16:00:00',1,1),(40,'2023-04-23','16:00:00','17:00:00',1,1),(41,'2023-04-23','17:00:00','18:00:00',1,1),(42,'2023-04-24','09:00:00','10:00:00',1,1),(43,'2023-04-24','10:00:00','11:00:00',1,1),(44,'2023-04-24','11:00:00','12:00:00',1,1),(45,'2023-04-24','12:00:00','13:00:00',1,1),(46,'2023-04-24','13:00:00','14:00:00',1,1),(47,'2023-04-24','14:00:00','15:00:00',1,1),(48,'2023-04-24','15:00:00','16:00:00',1,1),(49,'2023-04-24','16:00:00','17:00:00',1,1),(50,'2023-04-24','17:00:00','18:00:00',1,1),(51,'2023-04-25','09:00:00','10:00:00',1,1),(52,'2023-04-25','10:00:00','11:00:00',1,1),(53,'2023-04-25','11:00:00','12:00:00',1,1),(54,'2023-04-25','12:00:00','13:00:00',1,1),(55,'2023-04-25','13:00:00','14:00:00',1,1),(56,'2023-04-25','14:00:00','15:00:00',1,1),(57,'2023-04-25','15:00:00','16:00:00',1,1),(58,'2023-04-25','16:00:00','17:00:00',1,1),(59,'2023-04-25','17:00:00','18:00:00',1,1),(60,'2023-04-26','09:00:00','10:00:00',1,1),(61,'2023-04-26','10:00:00','11:00:00',1,1),(62,'2023-04-26','11:00:00','12:00:00',1,1),(63,'2023-04-26','12:00:00','13:00:00',1,1),(64,'2023-04-26','13:00:00','14:00:00',1,1),(65,'2023-04-26','14:00:00','15:00:00',1,1),(66,'2023-04-26','15:00:00','16:00:00',1,1),(67,'2023-04-26','16:00:00','17:00:00',1,1),(68,'2023-04-26','17:00:00','18:00:00',1,1),(69,'2023-04-27','09:00:00','10:00:00',1,1),(70,'2023-04-27','10:00:00','11:00:00',1,1),(71,'2023-04-27','11:00:00','12:00:00',1,1),(72,'2023-04-27','12:00:00','13:00:00',1,1),(73,'2023-04-27','13:00:00','14:00:00',1,1),(74,'2023-04-27','14:00:00','15:00:00',1,1),(75,'2023-04-27','15:00:00','16:00:00',1,1),(76,'2023-04-27','16:00:00','17:00:00',1,1),(77,'2023-04-27','17:00:00','18:00:00',1,1),(78,'2023-04-28','09:00:00','10:00:00',1,1),(79,'2023-04-28','10:00:00','11:00:00',1,1),(80,'2023-04-28','11:00:00','12:00:00',1,1),(81,'2023-04-28','12:00:00','13:00:00',1,1),(82,'2023-04-28','13:00:00','14:00:00',1,1),(83,'2023-04-28','14:00:00','15:00:00',1,1),(84,'2023-04-28','15:00:00','16:00:00',1,1),(85,'2023-04-28','16:00:00','17:00:00',1,1),(86,'2023-04-28','17:00:00','18:00:00',1,1),(87,'2023-04-29','09:00:00','10:00:00',1,1),(88,'2023-04-29','10:00:00','11:00:00',1,1),(89,'2023-04-29','11:00:00','12:00:00',1,1),(90,'2023-04-29','12:00:00','13:00:00',1,1),(91,'2023-04-29','13:00:00','14:00:00',1,1),(92,'2023-04-29','14:00:00','15:00:00',1,1),(93,'2023-04-29','15:00:00','16:00:00',1,1),(94,'2023-04-29','16:00:00','17:00:00',1,1),(95,'2023-04-29','17:00:00','18:00:00',1,1),(96,'2023-04-22','20:00:00','21:00:00',1,1),(97,'2023-04-22','21:00:00','22:00:00',1,1),(98,'2023-04-23','20:00:00','21:00:00',1,1),(99,'2023-04-23','21:00:00','22:00:00',1,1),(100,'2023-04-24','20:00:00','21:00:00',1,1),(101,'2023-04-24','21:00:00','22:00:00',1,1),(102,'2023-04-25','20:00:00','21:00:00',1,1),(103,'2023-04-25','21:00:00','22:00:00',1,1),(104,'2023-04-26','20:00:00','21:00:00',1,1),(105,'2023-04-26','21:00:00','22:00:00',1,1),(106,'2023-04-27','20:00:00','21:00:00',1,1),(107,'2023-04-27','21:00:00','22:00:00',1,1),(108,'2023-04-28','20:00:00','21:00:00',1,1),(109,'2023-04-28','21:00:00','22:00:00',1,1),(110,'2023-04-29','20:00:00','21:00:00',1,1),(111,'2023-04-29','21:00:00','22:00:00',1,1);
 /*!40000 ALTER TABLE `slots` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,7 +421,7 @@ DROP TABLE IF EXISTS `student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student` (
-  `student_id` int NOT NULL,
+  `student_id` int NOT NULL AUTO_INCREMENT,
   `student_name` varchar(255) DEFAULT NULL,
   `student_major` varchar(255) DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
@@ -439,7 +439,7 @@ CREATE TABLE `student` (
   CONSTRAINT `student_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `student_ibfk_2` FOREIGN KEY (`advisor_id`) REFERENCES `advisor` (`staff_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `student_ibfk_3` FOREIGN KEY (`section_id`) REFERENCES `section` (`section_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1037 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -657,11 +657,11 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `fill_participants`(IN p_user_id INT, IN p_club_name VARCHAR(255))
 BEGIN
@@ -669,6 +669,8 @@ BEGIN
  SELECT club_id INTO id FROM club WHERE club_name = p_club_name;
 IF NOT EXISTS(SELECT * FROM participates WHERE student_id = p_user_id) THEN
 INSERT INTO participates (club_id, student_id) VALUES (id, p_user_id);
+ELSE 
+SIGNAL SQLSTATE '42000' SET MESSAGE_TEXT = 'You are already enrolled in a club';
 END IF;
 END ;;
 DELIMITER ;
@@ -846,6 +848,31 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_login` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_login`(IN p_user_name VARCHAR(200),IN p_password VARCHAR(50))
+BEGIN
+ DECLARE id INT;
+ SELECT user_id into id FROM user WHERE username = p_user_name AND password = p_password;
+ If id is not null then 
+ SELECT * FROM user WHERE username = p_user_name AND password = p_password;
+ else
+ SIGNAL SQLSTATE '42000' SET MESSAGE_TEXT = 'User Does Not Exists';
+END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `get_professor` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -888,18 +915,18 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_slots`(IN p_user_id INT)
 BEGIN
 select * from slots 
     join advisor on slots.advisor_id = advisor.staff_id 
     join student on student.advisor_id = advisor.staff_id 
-    Where student_id = 101 and slot_status = 1 and slot_date=CURDATE();
+    Where student_id = p_user_id and slot_status = 1 and slot_date=CURDATE();
     END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1221,4 +1248,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-19 12:12:15
+-- Dump completed on 2023-04-21 21:02:51
