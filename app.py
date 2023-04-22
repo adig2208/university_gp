@@ -49,7 +49,6 @@ try:
                     session["username"] = user[1]
                     session["user_id"] = user[0]
                     session["user_role"] = user[3]
-                    print(session["user_role"])
                     x = password_updated(session["username"])
                     if x==1:
                     # Map role to appropriate page
@@ -112,7 +111,6 @@ try:
             phone = request.form['phone']
             email = request.form['email']
             cursor = mysql.connection.cursor()
-            print(session['user_id'])
             cursor.callproc('update_professor', (name, dob, tenure, phone, email,session['user_id']))
             mysql.connection.commit()
             # redirect the user back to their profile page
@@ -126,7 +124,6 @@ try:
             phone = request.form['phone']
             email = request.form['email']
             cursor = mysql.connection.cursor()
-            print(session['user_id'])
             cursor.callproc('update_advisor', (name, dob, phone, email,session['user_id']))
             mysql.connection.commit()
             # redirect the user back to their profile page
@@ -139,7 +136,6 @@ try:
             dob = request.form['dob']
             email = request.form['email']
             cursor = mysql.connection.cursor()
-            print(session['user_id'])
             cursor.callproc('update_student', (name, dob,email,session['user_id']))
             mysql.connection.commit()
             # redirect the user back to their profile page
@@ -178,7 +174,6 @@ try:
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             cursor.callproc('get_student', (session['user_id'],))
             stu = cursor.fetchone()   
-            print(session['user_role'])
             return render_template("student.html", stu = stu)
         return redirect(url_for('login'))
 
@@ -200,8 +195,7 @@ try:
         if 'loggedin' in session:
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             cursor.callproc('get_advisor', (session['user_id'],))
-            adv = cursor.fetchone() 
-            print(adv)  
+            adv = cursor.fetchone()  
             return render_template("advisor.html", adv = adv)
         return redirect(url_for('login'))
 
@@ -229,7 +223,6 @@ try:
     def update_club():
         if request.method == 'POST':
             name = request.form['name']
-            print(name)
             try:
                 cursor = mysql.connection.cursor()
                 user = session['user_id']
@@ -281,7 +274,6 @@ try:
     @app.route('/get_rooms', methods=['POST'])
     def get_rooms():
         building_id = request.form['building_id']
-        print(building_id)
         conn = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         conn.callproc('get_rooms',(building_id,))
         rooms = conn.fetchall()
@@ -324,7 +316,6 @@ try:
                     'room_capacity': row[6],
                     'building_name': row[7],
                 })
-            print(get_events)
             return render_template("club_events.html", get_events = get_events)
 
     @app.route("/book_appointment")
